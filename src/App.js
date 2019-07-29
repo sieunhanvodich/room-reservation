@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import UserService from  './services/UserService'
+import RoomList from './view/RoomList'
 
 export default class App extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        Helloo
+        <RoomList/>
       </div>
     )
   }
