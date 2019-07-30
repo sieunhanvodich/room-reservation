@@ -7,7 +7,7 @@ class HeaderHomeScreen extends Component {
       <Container>
         <Row>
           <Col>
-            <h1 className="title">Rom-Reservation</h1>
+            <h1 className="title">Room-Reservation</h1>
           </Col>
         </Row>
       </Container>

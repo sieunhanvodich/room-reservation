@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <Router>
 
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="primary" variant="dark">
           {/* <Navbar.Brand href="#home">Room Reservation</Navbar.Brand> */}
           <Navbar.Brand href="#home">
             <img
