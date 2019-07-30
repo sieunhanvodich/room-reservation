@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import user from './resources/img/user.png'
 import logo from './resources/img/reserve.png'
 // import logo from './resources/img/Reservation.png'
-import { Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap'
 
 export default class App extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <Router>
 
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="light" variant="light">
           {/* <Navbar.Brand href="#home">Room Reservation</Navbar.Brand> */}
           <Navbar.Brand href="#home">
             <img
@@ -54,9 +54,9 @@ export default class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <div className="container">
+        <Container>
           <RouterURL />
-        </div>
+        </Container>
       </Router>
     )
   }

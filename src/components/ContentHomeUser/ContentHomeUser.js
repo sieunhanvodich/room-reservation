@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
-import { Nav } from 'react-bootstrap';
 import DatePicker from '../datePicker/DatePicker';
+import {Container} from 'react-bootstrap'
 
 
-import "react-datepicker/dist/react-datepicker.css";
-
-class ContentHomeUser extends Component {
-  constructor(props) {
-    super(props);
-   
-  }
-  
+class ContentHomeUser extends Component { 
   render() {
     return (
-      <div>
+      <Container>
         <DatePicker></DatePicker>
-        {/* <Nav fill variant="tabs" defaultActiveKey="/home">
-          <Nav.Item>          
-            <Nav.Link eventKey="/aaaaa">Phòng đã đặt</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="/home">Cuộc họp</Nav.Link>
-          </Nav.Item>
-        </Nav> */}
-        
-      </div>
+          
+      </Container>
     );
   }
 }
