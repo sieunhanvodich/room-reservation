@@ -3,8 +3,8 @@ import './App.css'
 import UserService from  './services/UserService'
 import { connect } from 'react-redux'
 import { saveUserInfo } from './store/actions'
-import Login from './view/login/Login'
-// import BookingScreen from './view/bookingScreen/BookingScreen.js'
+import BookingScreen from './view/bookingScreen/BookingScreen.js'
+import "react-datepicker/dist/react-datepicker.css";
 
 class App extends Component {
   componentDidMount() {
@@ -21,8 +21,7 @@ class App extends Component {
       // <div className="App">
       //   Helloo
       // </div>
-      <Login></Login>
-      // <BookingScreen></BookingScreen>
+      <BookingScreen></BookingScreen>
     )
   }
 }
