@@ -47,7 +47,7 @@ export default class App extends Component {
                     className="d-inline-block align-top"
                     alt=""
                   />
-                  <Nav style={{ color: 'blue', fontSize:'15px', marginLeft:'10px'}}><u>nhuvanduy97</u></Nav>
+                  <Nav style={{ color: 'blue', fontSize:'15px', marginLeft:'10px'}}><u>duong</u></Nav>
                 </Navbar.Brand>
                 <NavDropdown.Item href="#action/3.2"><u>Logout</u></NavDropdown.Item>
               </NavDropdown>
