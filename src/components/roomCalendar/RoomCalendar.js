@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
-
+import "./RoomCalendar.css"
 class RoomCalendar extends Component {
   state = {
     date: new Date(),
@@ -10,8 +10,7 @@ class RoomCalendar extends Component {
   render() {
     return (
       <div>
-         <Calendar
-          style={{resize: "both"}}
+         <Calendar className="calendar"
           onChange={this.onChange}
           value={this.state.date}
         />

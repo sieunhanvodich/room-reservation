@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Table, Col, Row} from 'react-bootstrap';
 import "./RoomList.css"
-import Calendar from 'react-calendar';
+import RoomCalendar from '../components/roomCalendar/RoomCalendar';
 
 class RoomList extends Component {
   render() {
@@ -9,7 +9,7 @@ class RoomList extends Component {
       <div>
         <div className="headname"> ROOM LIST</div>
         <Row>
-        <Col lg={9} md={6}>
+        <Col lg={10} >
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -149,8 +149,8 @@ class RoomList extends Component {
         </Table>
         </Col>
         <Col>
-          <Row><Calendar /></Row>
-          <Row>asd</Row>
+          <Row><RoomCalendar /></Row>
+          <Row>Responsible</Row>
         </Col>
         </Row>
       </div>
