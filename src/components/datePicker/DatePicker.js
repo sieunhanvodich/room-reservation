@@ -17,7 +17,7 @@ class DatePickerr extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div>
         <div>
           Chon ngay
         </div>

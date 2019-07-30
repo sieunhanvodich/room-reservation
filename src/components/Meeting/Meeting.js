@@ -1,32 +1,16 @@
 import React from 'react';
-import { Tab, Row, Col, Nav } from 'react-bootstrap';
+import { Tab, Row, Col, Nav, Card } from 'react-bootstrap';
 
-const Meeting = ({}) => {
+const Meeting = ({onClickShowDetail}) => {
     return (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <Row>
-            <Col sm={3}>
-              <Nav variant="pills" className="flex-column">
-                <Nav.Item>
-                  <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Col>
-            <Col sm={9}>
-              <Tab.Content>
-                <Tab.Pane eventKey="first">
-                  Hello
-                </Tab.Pane>
-                <Tab.Pane eventKey="second">
-                  Hello
-                </Tab.Pane>
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+        <Card className="m-3" style={{width: '14rem', height: "9rem"}} onClick={onClickShowDetail}>
+          <Card.Body>
+            <Card.Title>Meeting something</Card.Title>
+            <Card.Subtitle>Room D1</Card.Subtitle>
+            <Card.Text>2h-4h</Card.Text>
+            <Card.Link href="/detail" className="float-right">Detail</Card.Link>
+          </Card.Body>
+        </Card>
     )
 }
 
