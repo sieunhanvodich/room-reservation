@@ -1,25 +1,157 @@
 import React, { Component } from 'react';
+import {Table, Col, Row} from 'react-bootstrap';
 import "./RoomList.css"
-import { Container, Row, Col, ListGroup } from "react-bootstrap"
-import RoomSearch from "../components/roomList/RoomSearch"
-import RoomStatus from '../components/roomList/RoomStatus';
+import Calendar from 'react-calendar';
 
 class RoomList extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="headname">
-        ROOM LIST
-        </div>
-         <Row className="row1">
-          <Col className="col1"><RoomSearch/></Col>
-          <Col xs={5}></Col>
-          <Col><RoomStatus/></Col>
-        </Row>
-        <Row className="row2">
-          <Col>1 of 3</Col>
-          <Col xs={4}>2 of 3 (wider)</Col>
-          <Col>3 of 3</Col>
+      <div>
+        <div className="headname"> ROOM LIST</div>
+        <Row>
+        <Col lg={9} md={6}>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Room</th>
+              <th>IOT</th>
+              <th>AWS</th>
+              <th>AZURE</th>
+              <th>IOS</th>
+              <th>ANDROID</th>
+              <th>WINDOW</th>
+              {/* <th>Schedule</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              {/* <td><Calendar /></td> */}
+            </tr>
+            <tr>
+              <td>9:00</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             
+            </tr>
+            <tr>
+              <td>9:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr>
+            <tr>
+              <td>10:00</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             
+            </tr>
+            <tr>
+              <td>10:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+            <tr>
+              <td>11:00</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+           
+            </tr>
+            <tr>
+              <td>11:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             
+            </tr>
+            <tr>
+              <td>13:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              {/* <th>Responsible</th> */}
+           
+            </tr>
+            <tr>
+              <td>14:00</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+          
+            </tr>
+            <tr>
+              <td>14:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+            <tr>
+              <td>15:00</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+            <tr>
+              <td>15:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+          </tbody>
+        </Table>
+        </Col>
+        <Col>
+          <Row><Calendar /></Row>
+          <Row>asd</Row>
+        </Col>
         </Row>
       </div>
     );
