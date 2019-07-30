@@ -19,7 +19,6 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-
         <Navbar bg="primary" variant="dark">
           {/* <Navbar.Brand href="#home">Room Reservation</Navbar.Brand> */}
           <Navbar.Brand href="#home">
