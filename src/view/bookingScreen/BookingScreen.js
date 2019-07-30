@@ -46,7 +46,7 @@ class BookingScreen extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
+            <Form.Group as={Col} className="time" controlId="time">
               <Form.Label>Time</Form.Label>
               <DatePicker 
                 className="datePicker"
