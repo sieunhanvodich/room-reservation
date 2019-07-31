@@ -1,0 +1,14 @@
+.contentHomeUser{
+  display: flex;
+  margin: 20px;
+}
+.myInfo{
+  margin-left: 50px; 
+}
+@media screen and (max-width:770px) {
+  .contentHomeUser{
+    display:block;
+    align-items: center;
+    position: relative;
+  }
+}

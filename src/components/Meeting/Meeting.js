@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Row, Col, Nav, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 const Meeting = ({onClickShowDetail}) => {
     return (

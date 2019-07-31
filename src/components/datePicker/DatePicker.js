@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
-
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-class DatePickerr extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      startDate: new Date()
+import React from 'react';
+import { DatePicker, DatePickerInput } from 'rc-datepicker';
+import 'rc-datepicker/lib/style.css';
+ 
+export default class DatePickerr extends React.Component {
+    constructor(props, context) {
+        super(props, context);    
+        this.state = {
+            selectedDate: new Date()
+        };
+        this.onChange = this.onChange.bind(this);
     }
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-  render() {
-    return (
-      <div>
-        <div>
-          Chon ngay
-        </div>
-        <DatePicker
-          dateFormat = "dd/MM/yyyy"
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-        />  
-      </div>
-    );
-  }
-}
 
-export default DatePickerr;
+    onChange(date) {
+		this.setState({
+			selectedDate: date
+		});
+	}
+    render() {
+        return (
+            <div>
+                <DatePickerInput
+                    onChange={this.onChange}
+                    value={this.state.selectedDate}
+                />
+                <DatePicker onChange={this.onChange} value={this.state.selectedDate} />
+            </div>
+        );
+    }
+}

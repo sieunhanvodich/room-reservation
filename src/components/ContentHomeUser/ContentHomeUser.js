@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import DatePicker from '../datePicker/DatePicker';
-import Meeting from '../Meeting/Meeting';
 import ListMeeting from '../ListMeeting/ListMeeting';
-import {Container, Modal, Button} from 'react-bootstrap'
-
+import { Modal, Button } from 'react-bootstrap'
+import './contentHomeUser.css'
 import "react-datepicker/dist/react-datepicker.css";
 
 class ContentHomeUser extends Component {
@@ -29,27 +28,29 @@ class ContentHomeUser extends Component {
     let listOwnMeeting = [1, 2, 3];
     let listInvitedMeeting = [1, 2, 3, 4];
     return (
-      <div>
+      <div className="contentHomeUser">
         <DatePicker></DatePicker>
-        <h4 className="mt-3">Meeting upcomming</h4>
-        <ListMeeting Meetings={listUpcomming} onClickCard={this.handleShow}/>
+        <div className="myInfo">
+          <h4 className="mt-3">Meeting upcomming</h4>
+          <ListMeeting Meetings={listUpcomming} onClickCard={this.handleShow} />
 
-        <h4 className="mt-3">Your Meeting</h4>
-        <ListMeeting Meetings={listOwnMeeting} onClickCard={this.handleShow}/>
+          <h4 className="mt-3">Your Meeting</h4>
+          <ListMeeting Meetings={listOwnMeeting} onClickCard={this.handleShow} />
 
-        <h4 className="mt-3">Invited Meeting</h4>
-        <ListMeeting Meetings={listInvitedMeeting} onClickCard={this.handleShow}/>
-        <Modal show={this.state.show} onHide={this.handleClose} size="lg">
-          <Modal.Header closeButton>
-            <Modal.Title>Header</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            This is body
+          <h4 className="mt-3">Invited Meeting</h4>
+          <ListMeeting Meetings={listInvitedMeeting} onClickCard={this.handleShow} />
+          <Modal show={this.state.show} onHide={this.handleClose} size="lg">
+            <Modal.Header closeButton>
+              <Modal.Title>Header</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              This is body
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
       </div>
     );
   }
