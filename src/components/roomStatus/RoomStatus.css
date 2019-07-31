@@ -1,83 +1,16 @@
-.borderfree{
+.onedaybook{
   display: flex;
-  margin-left: 50px; 
-}
-#borderfree{
-  margin-right: 20px;
-  width: 40px;
-  height: 20px;
-  display: flex;
-  border: 1px solid black;
-  background-color: white;
-}
-
-
-.borderbooked{
-  display: flex;
-  margin-left: 50px; 
-  margin-top: 20px;
-}
-.borderbooked:hover{
-  color: green;
-}
-#borderbooked{
-  margin-right: 20px;
-  width: 40px;
-  height: 20px;
-  display: flex;
-  border: 1px solid black;
-  background-color: green;
-}
-
-
-.borderbookday{
-  display: flex;
-  margin-left: 50px; 
-  margin-top: 20px;
-}
-.borderbookday:hover{
-  color: yellow;
-}
-#borderbookday{
-  margin-right: 20px;
-  width: 40px;
-  height: 20px;
-  display: flex;
-  border: 1px solid black;
-  background-color: yellow;
-}
-
-.borderbookweek{
-  display: flex;
-  margin-left: 50px; 
-  margin-top: 20px;
-}
-.borderbookweek:hover{
-  color: rgb(0, 255, 242); 
-}
-#borderbookweek{
-  margin-right: 20px;
-  width: 40px;
-  height: 20px;
-  display: flex;
-  border: 1px solid black;
-  background-color: rgb(0, 255, 242);
-}
-
-.borderbookmonth{
-  display: flex;
-  margin-left: 50px; 
-  margin-top: 20px;
-}
-.borderbookmonth:hover{
-  color: red;
-}
-#borderbookmonth{
-  margin-right: 20px;
-  width: 40px;
-  height: 20px;
-  display: flex;
-  border: 1px solid black;
-  background-color: red;
+  margin-left: 1%;
   
 }
+
+
+.weeklybook{
+  display: flex;
+  color: white;
+  
+}
+.weeklybook:hover{
+  color: white;
+}
+
