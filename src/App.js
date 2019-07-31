@@ -11,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
           <Navbar.Brand href="#home">
             <img
               src={logo}
@@ -43,7 +43,7 @@ export default class App extends Component {
                 className="d-inline-block align-top"
                 alt=""
               />
-              <Nav.Link href="#deets">DuyNhu</Nav.Link>
+              <Nav.Link style={{color:'white'}} href="#deets">DuyNhu</Nav.Link>
             </Navbar.Brand>
           </Navbar.Collapse>
         </Navbar>

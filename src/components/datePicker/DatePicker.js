@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatePicker, DatePickerInput } from 'rc-datepicker';
 import 'rc-datepicker/lib/style.css';
- 
+import './datePicker.css'
 export default class DatePickerr extends React.Component {
     constructor(props, context) {
         super(props, context);    
@@ -18,7 +18,12 @@ export default class DatePickerr extends React.Component {
 	}
     render() {
         return (
-            <div>
+            <div className="datePicker">
+                <div>
+                    <h4 className="title">Booking Details</h4>
+                    <hr style={{borderColor:'white'}}/>
+                    <h5 className="title1">Date: </h5>
+                </div>
                 <DatePickerInput
                     onChange={this.onChange}
                     value={this.state.selectedDate}

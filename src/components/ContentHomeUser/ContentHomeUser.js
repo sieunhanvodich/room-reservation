@@ -24,7 +24,7 @@ class ContentHomeUser extends Component {
   };
 
   render() {
-    let listUpcomming = [1, 2];
+    let listUpcomming = [1, 2, 3];
     let listOwnMeeting = [1, 2, 3];
     let listInvitedMeeting = [1, 2, 3, 4];
     return (
