@@ -1,4 +1,4 @@
-.react-autosuggest__container {
+/* .react-autosuggest__container {
   position: relative;
 }
 
@@ -114,4 +114,12 @@
 
 .react-autosuggest__suggestion--focused .highlight {
   color: #120000;
-} 
+}  */
+.avatar {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  border: 3px solid white;
+  transition: 0.2s;
+  top: 45px;
+}

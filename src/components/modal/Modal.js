@@ -13,7 +13,7 @@ class MyVerticallyCenteredModal extends Component {
         {...this.props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
+      // centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -21,18 +21,27 @@ class MyVerticallyCenteredModal extends Component {
         </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+         <Form.Row>
+            
+         </Form.Row>
           <Form.Row>
             <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Email or Name</Form.Label>
               <AutoComplete></AutoComplete>
             </Form.Group>
+            <Form.Group>
+              <ButtonToolbar>
+                {/* <Button variant="outline-secondary" onClick={this.props.onHide}>Close</Button> */}
+                <Button variant="outline-primary">Add</Button>
+              </ButtonToolbar>
+            </Form.Group>
           </Form.Row>
+
         </Modal.Body>
         <Modal.Footer>
-          <ButtonToolbar>
+          {/* <ButtonToolbar>
             <Button variant="outline-secondary" onClick={this.props.onHide}>Close</Button>
             <Button variant="outline-primary" onClick={this.props.onHide}>Add</Button>
-          </ButtonToolbar>
+          </ButtonToolbar> */}
         </Modal.Footer>
       </Modal>
     );

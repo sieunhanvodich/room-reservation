@@ -48,6 +48,7 @@
 
 .container {
   height: 100%;
+  width: 100%;
 }
 
 textarea {
@@ -119,7 +120,10 @@ Form.Check{
   z-index: 500;
 }
 @media only screen and (min-width:350px) and (max-width: 450px){
-  .avatar {
+  *{
+    zoom: 95%;
+  }
+  /* .avatar {
     width: 36px;
     height: 36px;
     position: absolute;
@@ -159,18 +163,22 @@ Form.Check{
   #avatar-6 {
     left: 100px;
     z-index: 500;
-  }
+  } */
 }
 @media only screen and (max-width: 350px){
-  .avatar {
-    width: 30px;
-    height: 30px;
+*{
+  zoom: 95%;
+}
+  /* .avatar {
     position: absolute;
     border: 3px solid white;
     transition: 0.2s;
     top: 45px;
+    zoom: 70%;
   }
-
+button{
+  zoom: 50%;
+}
   #avatar-2 {
     left: 10px;
     z-index: 100;
@@ -202,6 +210,6 @@ Form.Check{
   #avatar-6 {
     left: 50px;
     z-index: 500;
-  }
+  } */
 }
 

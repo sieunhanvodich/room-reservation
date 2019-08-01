@@ -6,6 +6,7 @@
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "chroma-js": "^2.0.4",
     "react": "^16.8.6",
     "react-autosuggest": "^9.4.3",
     "react-bootstrap": "^1.0.0-beta.10",
@@ -15,6 +16,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
     "redux": "^4.0.4"
   },
   "scripts": {

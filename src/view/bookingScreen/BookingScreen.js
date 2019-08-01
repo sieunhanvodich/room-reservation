@@ -188,8 +188,8 @@ class BookingScreen extends Component {
             </Form.Group> */}
             <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
               <ButtonToolbar>
-                <Button variant="outline-secondary" size="sm" className="cancel">Cancel</Button>
-                <Button variant="outline-primary" size="sm" className="submit">Book</Button>
+                <Button variant="outline-secondary" className="cancel">Cancel</Button>
+                <Button variant="outline-primary" className="submit">Book</Button>
               </ButtonToolbar>
             </Form.Group>
           </Form.Row>
