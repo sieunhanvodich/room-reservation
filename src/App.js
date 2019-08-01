@@ -4,7 +4,7 @@ import RouterURL from './config/RouterURL'
 import { BrowserRouter as Router } from "react-router-dom";
 import user from './resources/img/user.png'
 import logo from './resources/img/reserve.png'
-import { Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap'
 
 export default class App extends Component {
 
@@ -47,9 +47,9 @@ export default class App extends Component {
             </Navbar.Brand>
           </Navbar.Collapse>
         </Navbar>
-        <div className="container">
+        {/* <Container> */}
           <RouterURL />
-        </div>
+        {/* </Container> */}
       </Router>
     )
   }
