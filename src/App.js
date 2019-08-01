@@ -4,14 +4,14 @@ import RouterURL from './config/RouterURL'
 import { BrowserRouter as Router } from "react-router-dom";
 import user from './resources/img/user.png'
 import logo from './resources/img/reserve.png'
-import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap'
+import { Nav, NavDropdown, Navbar } from 'react-bootstrap'
 
 export default class App extends Component {
 
   render() {
     return (
       <Router>
-        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" >
           <Navbar.Brand href="#home">
             <img
               src={logo}
@@ -47,10 +47,10 @@ export default class App extends Component {
             </Navbar.Brand>
           </Navbar.Collapse>
         </Navbar>
-        {/* <Container> */}
-          <RouterURL />
-        {/* </Container> */}
+        <RouterURL />
+        {/* <div style={{height: "50px", backgroundColor: "red"}}></div> */}
       </Router>
+
     )
   }
 }

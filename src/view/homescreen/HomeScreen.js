@@ -4,8 +4,8 @@ import './HomeScreen.css'
 class HomeScreen extends Component {
   render() {
     return (
-      <div>
-        <ContentHomeUser />
+      <div >
+        <ContentHomeUser  />
       </div>
     )
   }

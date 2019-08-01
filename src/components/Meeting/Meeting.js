@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import './Meeting.css';
 
 const Meeting = ({onClickShowDetail, content}) => {
     return (
-        <Card className="m-3" style={{width: '14rem', height: "9rem"}} onClick={onClickShowDetail}>
+        <Card className="m-3 meeting" onClick={onClickShowDetail}>
           <Card.Body>
             <Card.Title>{content.name}</Card.Title>
             <Card.Subtitle>Room {content.room}</Card.Subtitle>
