@@ -4,8 +4,8 @@ import DatePicker from '../datePicker/DatePicker';
 import ListMeeting from '../ListMeeting/ListMeeting';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
-import { GoClock, GoPerson, GoOrganization } from 'react-icons/go';
-import Select from 'react-select';
+import { GoPerson, GoOrganization } from 'react-icons/go';
+import ReactSelect from '../ReactSelect/ReactSelect';
 import './contentHomeUser.css'
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,22 +21,24 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
 
         <h5 className="mt-3"><GoOrganization />  Invited Meeting</h5>
         <ListMeeting Meetings={listMeeting.invited} onClickCard={(detail) => handleShow(detail)} />
+
         <Modal show={show} onHide={handleClose} size="lg">
-          <Modal.Header closeButton>
-            <Modal.Title>Detail</Modal.Title>
+          <Modal.Header closeButton  className="text-center">
+            <Modal.Title>{currentDetailMeeting.name}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <h3 className="text-center">{currentDetailMeeting.name}</h3>
-            <p className="d-inline"><h6>Location: </h6>Room {currentDetailMeeting.room}</p>
-            <h6>Time: </h6>From {currentDetailMeeting.from} to {currentDetailMeeting.to}
-            <h6>Requirement: </h6>{currentDetailMeeting.requirement}
-            <h6>Description: </h6>{currentDetailMeeting.description}
+          <Modal.Body className="ml-3">
+            {/* <h3 className="text-center"></h3> */}
+            <p><h6 className="d-inline">Location: </h6>Room {currentDetailMeeting.room}</p>
+            <p><h6 className="d-inline">Time: </h6>From {currentDetailMeeting.from} to {currentDetailMeeting.to}</p>
+            <p><h6 className="d-inline">Requirement: </h6>{currentDetailMeeting.requirement}</p>
+            <p><h6 className="d-inline">Description: </h6>{currentDetailMeeting.description}</p>  
             <ul className="list-group">
-              {currentDetailMeeting.isOwn ? 'List member:' : ''}
+              {currentDetailMeeting.isOwn ? (<p><h6 className="d-inline">Members: </h6> {currentDetailMeeting.members.length}</p>) : null}
               {currentDetailMeeting.isOwn && currentDetailMeeting.members && currentDetailMeeting.members.map((member, index) => (
-                <li key={index} className="list-group-item">{member.name}     <FaTimes onClick={() => handleRemoveMember(member.id)} /></li>
+                <li key={index} className="list-group-item">{member.name}     <span class="badge badge-light  "><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></li>
+                // <span class="badge badge-primary">{member.name}    <span class="badge badge-light"><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></span>
               ))}
-              { currentDetailMeeting.isOwn ? 
+              {currentDetailMeeting.isOwn ? 
                 <Form
                   onSubmit={e => {
                     e.preventDefault();
@@ -53,6 +55,7 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
                   />
                 </Form> : ''
               }
+              <ReactSelect />
             </ul>
           </Modal.Body>
           <Modal.Footer>

@@ -12,7 +12,7 @@ const Meeting = ({onClickShowDetail, content}) => {
             <Card.Title>{content.name}</Card.Title>
             <Card.Subtitle><IoIosHome /> Room {content.room}</Card.Subtitle>
             <Card.Text><GoClock /> {content.from}-{content.to}</Card.Text>
-            <Card.Text>{content.active ? <FaRunning className="float-left"/> : null}<p className="float-right">Detail</p></Card.Text>
+            <div className="card-text">{content.active ? <FaRunning className="float-left"/> : null} <h6 className="float-right d-inline">Detail</h6></div>
           </Card.Body>
         </Card>
     )
