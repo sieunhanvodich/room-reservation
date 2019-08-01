@@ -16,9 +16,6 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
     <div className="contentHomeUser">
       <DatePicker></DatePicker>
       <div className="myInfo col-12">
-        <h5 className="mt-3"><GoClock />  Meeting upcomming</h5>
-        <ListMeeting Meetings={listMeeting.upComming} onClickCard={(detail) => handleShow(detail)} />
-
         <h5 className="mt-3"><GoPerson />  Your Meeting</h5>
         <ListMeeting Meetings={listMeeting.own} onClickCard={(detail) => handleShow(detail)} />
 

@@ -1,21 +1,16 @@
 import { SHOW_MODAL, CLOSE_MODAL, GET_DETAIL_MEETING, ADD_MEMBER, REMOVE_MEMBER, REMOVE_MEETING } from '../actions/ActionTypes';
-let upComming = [
-    { id: 1, isOwn: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting about eat', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
-    { id: 2, isOWn: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 1', room: 'R3', from: '2h', to: '4h' },
-  ];
-
 let own = [
-    { id: 1, isOwn: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting about eat', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
-    { id: 3, isOwn: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting todo', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
-    { id: 5, isOwn: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting abc', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 1, isOwn: true, active: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting about eat', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 3, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting todo', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 5, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting abc', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
 ];
 
 let invited = [
-    { id: 2, isOWn: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 1', room: 'R3', from: '2h', to: '4h' },
-    { id: 4, isOWn: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 2', room: 'R3', from: '2h', to: '4h' },
+    { id: 2, isOWn: false, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 1', room: 'R3', from: '2h', to: '4h' },
+    { id: 4, isOWn: false, active:false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 2', room: 'R3', from: '2h', to: '4h' },
 ];
 
-let listMeeting = {upComming: upComming, own: own, invited: invited};
+let listMeeting = {own: own, invited: invited};
 
 const homeReducer = (state = {show: false, currentDetailMeeting: {}, listMeeting: listMeeting}, action) => {
     switch (action.type) {
@@ -57,7 +52,6 @@ const homeReducer = (state = {show: false, currentDetailMeeting: {}, listMeeting
                 ...state,
                 show: false,
                 listMeeting: {
-                    upComming: state.listMeeting.upComming.filter(meeting => meeting.id !== action.idMeeting),
                     own: state.listMeeting.own.filter(meeting => meeting.id !== action.idMeeting),
                     invited: state.listMeeting.invited.filter(meeting => meeting !== action.idMeeting)
                 }

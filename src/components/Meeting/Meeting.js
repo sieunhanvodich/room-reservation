@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { GoClock } from 'react-icons/go';
+import { FaRunning } from 'react-icons/fa';
+import { IoIosHome } from 'react-icons/io';
 import './Meeting.css';
 
 const Meeting = ({onClickShowDetail, content}) => {
@@ -8,12 +10,10 @@ const Meeting = ({onClickShowDetail, content}) => {
         <Card className="m-3 meeting" onClick={onClickShowDetail}>
           <Card.Body>
             <Card.Title>{content.name}</Card.Title>
-            <Card.Subtitle>Room {content.room}</Card.Subtitle>
-            <Card.Text>{content.from}-{content.to}</Card.Text>
+            <Card.Subtitle><IoIosHome /> Room {content.room}</Card.Subtitle>
+            <Card.Text><GoClock /> {content.from}-{content.to}</Card.Text>
+            <Card.Text>{content.active ? <FaRunning className="float-left"/> : null}<p className="float-right">Detail</p></Card.Text>
           </Card.Body>
-          {/* <Card.Footer>
-            <Card.Link href="/detail" className="float-right">Detail</Card.Link>
-          </Card.Footer> */}
         </Card>
     )
 }
