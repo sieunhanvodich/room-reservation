@@ -8,6 +8,10 @@
     margin-bottom: 20px;
 }
 .title1{
-    color: white;
-   
+    color: white;  
+}
+@media screen and (max-width:320px){
+  .calendar{
+    zoom: 80%;
+  }
 }
