@@ -1,7 +1,30 @@
-.calendar{
-  zoom: 80%;
+@media (min-width: 1200px) {
+  .calendar{
+    zoom: 80%;
+
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .calendar{
+    zoom: 70%;
+  }
+}
+@media (min-width: 600px) and (max-width: 991px) {
+  .calendar{
+    zoom:80%;
+  }
 }
 
+@media (max-width: 599px) {
+  .calendar{
+    zoom: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .calendar{
+    zoom: 100%;
+  }
+}
 
 
 
