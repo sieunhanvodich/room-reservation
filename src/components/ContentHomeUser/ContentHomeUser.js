@@ -26,10 +26,11 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
             <Modal.Title>Detail</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h3>{currentDetailMeeting.name}</h3>
-            <h4>Room: {currentDetailMeeting.room}</h4>
-            <h6>Time: From {currentDetailMeeting.from} to {currentDetailMeeting.to}</h6>
-            <h5>Description: {currentDetailMeeting.description}</h5>
+            <h3 className="text-center">{currentDetailMeeting.name}</h3>
+            <p className="d-inline"><h6>Location: </h6>Room {currentDetailMeeting.room}</p>
+            <h6>Time: </h6>From {currentDetailMeeting.from} to {currentDetailMeeting.to}
+            <h6>Requirement: </h6>{currentDetailMeeting.requirement}
+            <h6>Description: </h6>{currentDetailMeeting.description}
             <ul className="list-group">
               {currentDetailMeeting.isOwn ? 'List member:' : ''}
               {currentDetailMeeting.isOwn && currentDetailMeeting.members && currentDetailMeeting.members.map((member, index) => (

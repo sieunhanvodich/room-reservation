@@ -1,13 +1,13 @@
 import { SHOW_MODAL, CLOSE_MODAL, GET_DETAIL_MEETING, ADD_MEMBER, REMOVE_MEMBER, REMOVE_MEETING } from '../actions/ActionTypes';
 let own = [
-    { id: 1, isOwn: true, active: true, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting about eat', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
-    { id: 3, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting todo', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
-    { id: 5, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting abc', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 1, isOwn: true, active: true, description: 'asdfsd asfdsdf sdfsfdsdf', requirement: "Bring your membership card", name: 'Meeting about eat', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 3, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', requirement: "Be a girl", name: 'Meeting todo', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
+    { id: 5, isOwn: true, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', requirement: "Be a gay", name: 'Meeting abc', room: 'R3', from: '2h', to: '4h', members: [{ id: 1, name: 'Nguyen Tung Duong' }, { id: 2, name: 'Nguyen Xuan Phuc' }] },
 ];
 
 let invited = [
-    { id: 2, isOWn: false, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 1', room: 'R3', from: '2h', to: '4h' },
-    { id: 4, isOWn: false, active:false, description: 'asdfsd asfdsdf sdfsfdsdf', name: 'Meeting 2', room: 'R3', from: '2h', to: '4h' },
+    { id: 2, isOWn: false, active: false, description: 'asdfsd asfdsdf sdfsfdsdf', requirement: "Be a girl", name: 'Meeting 1', room: 'R3', from: '2h', to: '4h' },
+    { id: 4, isOWn: false, active:false, description: 'asdfsd asfdsdf sdfsfdsdf', requirement: "Have a dick", name: 'Meeting 2', room: 'R3', from: '2h', to: '4h' },
 ];
 
 let listMeeting = {own: own, invited: invited};
