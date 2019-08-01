@@ -55,63 +55,153 @@ textarea {
 }
 
 .form {
-  width: 80%;
+  width: 100%;
   padding: 40px;
   border: 1px solid #ededed;
   box-shadow: 0 0 30px #ededed;
 }
-
-button.cancel, button.submit {
-  margin-left: 10px;
+.form-control:focus {
+  box-shadow: 0 0 0 0;
 }
 
+button{
+  margin-left: 10px;
+}
+Form.Check{
+  width: 100px;
+}
 .avatar {
   width: 45px;
   height: 45px;
   position: absolute;
   border: 3px solid white;
   transition: 0.2s;
+  top: 45px;
 }
 
 .avatar:hover {
   transform: scale(1.3)translate(0%, -10%);
 }
+
 #avatar-1:hover{
-  z-index: 999999;
+  z-index: 9999;
 }
 #avatar-2 {
-  left: 30px;
-  z-index: 1000;
+  left: 2.5%;
+  z-index: 100;
 }
 #avatar-2:hover{
-  z-index: 999999;
+  z-index: 9999;
 }
 #avatar-3 {
-  left: 60px;
-  z-index: 2000;
+  left: 4.5%;
+  z-index: 200;
 }
 #avatar-3:hover{
-  z-index: 999999;
+  z-index: 9999;
 }
 #avatar-4 {
-  left: 90px;
-  z-index: 3000;
+  left: 6.5%;
+  z-index: 300;
 }
 #avatar-4:hover{
-  z-index: 999999;
+  z-index: 9999;
 }
 #avatar-5 {
-  left: 120px;
-  z-index: 4000;
+  left: 8.5%;
+  z-index: 400;
 }
 #avatar-5:hover{
-  z-index: 999999;
+  z-index: 9999;
 }
 #avatar-6 {
-  left: 150px;
-  z-index: 5000;
+  left: 10.5%;
+  z-index: 500;
+}
+@media only screen and (min-width:350px) and (max-width: 450px){
+  .avatar {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    border: 3px solid white;
+    transition: 0.2s;
+    top: 45px;
+  }
+
+  #avatar-2 {
+    left: 20px;
+    z-index: 100;
+  }
+  #avatar-2:hover{
+    z-index: 9999;
+  }
+  #avatar-3 {
+    left: 40px;
+    z-index: 200;
+  }
+  #avatar-3:hover{
+    z-index: 9999;
+  }
+  #avatar-4 {
+    left: 60px;
+    z-index: 300;
+  }
+  #avatar-4:hover{
+    z-index: 9999;
+  }
+  #avatar-5 {
+    left: 80px;
+    z-index: 400;
+  }
+  #avatar-5:hover{
+    z-index: 9999;
+  }
+  #avatar-6 {
+    left: 100px;
+    z-index: 500;
+  }
+}
+@media only screen and (max-width: 350px){
+  .avatar {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: 3px solid white;
+    transition: 0.2s;
+    top: 45px;
+  }
+
+  #avatar-2 {
+    left: 10px;
+    z-index: 100;
+  }
+  #avatar-2:hover{
+    z-index: 999999;
+  }
+  #avatar-3 {
+    left: 20px;
+    z-index: 200;
+  }
+  #avatar-3:hover{
+    z-index: 999999;
+  }
+  #avatar-4 {
+    left: 30px;
+    z-index: 300;
+  }
+  #avatar-4:hover{
+    z-index: 999999;
+  }
+  #avatar-5 {
+    left: 40px;
+    z-index: 400;
+  }
+  #avatar-5:hover{
+    z-index: 999999;
+  }
+  #avatar-6 {
+    left: 50px;
+    z-index: 500;
+  }
 }
 
-.form-control:focus {
-  box-shadow: 0 0 0 0;
-}
