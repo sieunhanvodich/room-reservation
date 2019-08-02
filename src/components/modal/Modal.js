@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Col, Button, ButtonToolbar } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import './Modal.css';
-import AutoComplete from '../../components/autoComplete/AutoComplete';
+import AutoComplete from '../../components/multiSelect/MultiSelect';
 // import logo1 from '../../resources/images/gai-xinh-1.jpg';
 
 class MyVerticallyCenteredModal extends Component {
@@ -21,9 +21,6 @@ class MyVerticallyCenteredModal extends Component {
         </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-         <Form.Row>
-            
-         </Form.Row>
           <Form.Row>
             <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
               <AutoComplete></AutoComplete>

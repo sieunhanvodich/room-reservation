@@ -3,8 +3,10 @@ import './App.css'
 import UserService from  './services/UserService'
 import { connect } from 'react-redux'
 import { saveUserInfo } from './store/actions'
-import BookingScreen from './view/bookingScreen/BookingScreen.js'
+// import BookingScreen from './view/bookingScreen/BookingScreen.js'
 import "react-datepicker/dist/react-datepicker.css";
+import RouterURL from './config/RouterURL';
+import { BrowserRouter as Router} from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +23,10 @@ class App extends Component {
       // <div className="App">
       //   Helloo
       // </div>
-      <BookingScreen></BookingScreen>
+      // <BookingScreen></BookingScreen>
+     <Router>
+        <RouterURL></RouterURL>
+     </Router>
     )
   }
 }

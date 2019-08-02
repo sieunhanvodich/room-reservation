@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Image, Container, Col, Button, ButtonToolbar } from 'react-bootstrap';
 import MyVerticallyCenteredModal from '../../components/modal/Modal';
+import AutoComplete from '../../components/autoComplete/AutoComplete';
 import './BookingScreen.css';
 import DatePicker from "react-datepicker";
 import logo1 from '../../resources/images/gai-xinh-1.jpg';
@@ -92,7 +93,8 @@ class BookingScreen extends Component {
             </Form.Group>
             <Form.Group as={Col} controlId="host">
               <Form.Label>Host</Form.Label>
-              <Form.Control type="text" placeholder="Host" />
+              {/* <Form.Control type="text" placeholder="Host" /> */}
+              <AutoComplete placeholder="Host" data></AutoComplete>
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -108,7 +110,8 @@ class BookingScreen extends Component {
             </Form.Group>
             <Form.Group as={Col} controlId="project">
               <Form.Label>Project</Form.Label>
-              <Form.Control type="text" placeholder="Project" />
+              {/* <Form.Control type="text" placeholder="Project" /> */}
+              <AutoComplete placeholder="Project" data></AutoComplete>
             </Form.Group>
           </Form.Row>
           <Form.Row>

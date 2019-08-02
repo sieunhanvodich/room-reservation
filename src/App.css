@@ -1,11 +1,8 @@
 .App {
   text-align: center;
 }
-html,body{
+html,body,#root,#root>div{
   height: 100%;
   width: 100%!important;
 }
-#root{
-  height: 100%;
-  width: 100%!important;
-}
+
