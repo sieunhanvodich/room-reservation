@@ -30,14 +30,14 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
               <Modal.Title>{currentDetailMeeting.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body className="ml-3">
-              <p><h6 className="d-inline">Location: </h6>Room {currentDetailMeeting.room}</p>
-              <p><h6 className="d-inline">Time: </h6>From {currentDetailMeeting.from} to {currentDetailMeeting.to}</p>
-              <p><h6 className="d-inline">Requirement: </h6>{currentDetailMeeting.requirement}</p>
-              <p><h6 className="d-inline">Description: </h6>{currentDetailMeeting.description}</p>
+              <p>Location: Room {currentDetailMeeting.room}</p>
+              <p>Time: From {currentDetailMeeting.from} to {currentDetailMeeting.to}</p>
+              <p>Requirement: {currentDetailMeeting.requirement}</p>
+              <p>Description: {currentDetailMeeting.description}</p>
               <ul className="list-group">
-                {currentDetailMeeting.isOwn ? (<p><h6 className="d-inline">Members: </h6> {currentDetailMeeting.members.length}</p>) : null}
+                {currentDetailMeeting.isOwn ? (<p>Members: {currentDetailMeeting.members.length}</p>) : null}
                 {currentDetailMeeting.isOwn && currentDetailMeeting.members && currentDetailMeeting.members.map((member, index) => (
-                  <li key={index} className="list-group-item">{member.name}     <span class="badge badge-light  "><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></li>
+                  <li key={index} className="list-group-item">{member.name}     <span className="badge badge-light  "><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></li>
                 ))}
                 {currentDetailMeeting.isOwn ?
                   <Form

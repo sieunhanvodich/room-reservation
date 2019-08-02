@@ -4,3 +4,47 @@
     background-color: #208BDA;
     color: white;
 }
+
+@media only screen and (max-width: 450px) {
+    .card {
+        margin: 10px;
+    }
+    .meeting {
+        width: 100%;
+        height: 5rem;
+    }
+    .card-title {
+        font-size: 15px;
+        margin-bottom: 7px;
+    }
+    .card-subtitle {
+        font-size: 12px;
+        display: inline;
+        /* margin-top: 5px; */
+    }
+    .time {
+        display: inline;
+        padding-bottom: 2px;
+    }
+    .time-block {
+        display: inline;
+        padding-left: 10px;
+    }
+    .card-body {
+        font-size: 10px;
+        padding: 10px;
+        height: 5rem;
+    }
+    .footer {
+        margin-top: 6px;
+    }
+    .running {
+        margin-right: 5px;
+    }
+    .room {
+        margin-bottom: 3px;
+    }
+    .footer p {
+        font-size: 11px;
+    }
+}

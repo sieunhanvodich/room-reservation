@@ -10,9 +10,9 @@ const Meeting = ({onClickShowDetail, content}) => {
         <Card className="m-3 meeting" onClick={onClickShowDetail}>
           <Card.Body>
             <Card.Title>{content.name}</Card.Title>
-            <Card.Subtitle><IoIosHome /> Room {content.room}</Card.Subtitle>
-            <Card.Text><GoClock /> {content.from}-{content.to}</Card.Text>
-            <div className="card-text">{content.active ? <FaRunning className="float-left"/> : null} <h6 className="float-right d-inline">Detail</h6></div>
+            <Card.Subtitle><IoIosHome className="room"/> Room {content.room}</Card.Subtitle>
+            <p className="card-text time-block"><GoClock className="time"/> {content.from}-{content.to}</p>
+            <div className="card-text footer">{content.active ? (<div className="d-inline"><FaRunning className="float-left running"/>Active</div>) : null} <p className="float-right d-inline">Detail</p></div>
           </Card.Body>
         </Card>
     )
