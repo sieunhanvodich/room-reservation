@@ -11,19 +11,19 @@ export default class DatePickerr extends Component {
 
   render() {
     return (
-      <div className="container_datePicker">
-        <div>
-          <h3 className="title">Detail</h3>
-          <hr className="hr"></hr>
-          <h5 className="title">Date:</h5>
+        <div className="container_datePicker">
+          <div>
+            <h3 className="title">Detail</h3>
+            <hr className="hr"></hr>
+            <h5 className="title">Date:</h5>
+          </div>
+          <div className="datePicker">
+            <Calendar
+              onChange={this.onChange}
+              value={this.state.date}
+            />
+          </div>
         </div>
-        <div className="datePicker">
-          <Calendar
-            onChange={this.onChange}
-            value={this.state.date}
-          />
-        </div>
-      </div>
     );
   }
 }
