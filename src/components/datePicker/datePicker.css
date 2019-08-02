@@ -1,17 +1,30 @@
-.datePicker{
-    background-color: #2a435a;
-    padding: 10px;
-    border-radius: 10px;
+.container_datePicker{
+  margin-top: 20px;
+  background-color: #2A3F54;
+  padding: 10px;
+  border-radius: 5px;
 }
-.title{
-    color: white;
-    margin-bottom: 20px;
+/* @media (min-width:415px) and (max-width:765px){
+  .datePicker{
+    width: 500px;
+  }
+} */
+
+@media (min-width:323px) and (max-width:415px){
+  .datePicker{
+    zoom:70%;
+  }
 }
-.title1{
-    color: white;  
-}
-@media screen and (max-width:320px){
-  .calendar{
+@media (min-width:200px) and (max-width:322px){
+  .container_datePicker{zoom: 90%}
+  .datePicker{
     zoom: 80%;
   }
+}
+.title{
+  color: white;
+}
+.hr{
+  border: 0.5px solid white;
+  
 }

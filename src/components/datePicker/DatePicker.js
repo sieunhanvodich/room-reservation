@@ -1,37 +1,28 @@
-import React from 'react';
-import { DatePicker, DatePickerInput } from 'rc-datepicker';
-import 'rc-datepicker/lib/style.css';
+import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 import './datePicker.css'
-export default class DatePickerr extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      selectedDate: new Date()
-    };
-    this.onChange = this.onChange.bind(this);
-    console.log(this.state.selectedDate);
+
+export default class DatePickerr extends Component {
+  state = {
+    date: new Date(),
   }
 
-  onChange(date) {
-    this.setState({
-      selectedDate: date
-    });
-    console.log(date)
-  }
- 
+  onChange = date => this.setState({ date })
+
   render() {
     return (
-      <div className="datePicker">
+      <div className="container_datePicker">
         <div>
-          <h4 className="title">Booking Details</h4>
-          <hr style={{ borderColor: 'white' }} />
-          <h5 className="title1">Date: </h5>
+          <h3 className="title">Detail</h3>
+          <hr className="hr"></hr>
+          <h5 className="title">Date: </h5>
         </div>
-        <DatePickerInput
-          onChange={this.onChange}
-          value={this.state.selectedDate}
-        />
-        <DatePicker className="calendar" onChange={this.onChange} value={this.state.selectedDate} />
+        <div className="datePicker">
+          <Calendar
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+        </div>
       </div>
     );
   }

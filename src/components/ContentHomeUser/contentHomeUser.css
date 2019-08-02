@@ -1,9 +1,5 @@
 .contentHomeUser{
   display: flex;
-  margin: 20px;
-}
-.myInfo{
-  margin-left: 50px; 
 }
 @media screen and (max-width:770px) {
   .contentHomeUser{
@@ -12,7 +8,6 @@
     position: relative;
   }
 }
-
 .modal-home {
   background-color: #F4F5F7;
 }
