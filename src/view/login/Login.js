@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container,Button, Row, Col } from 'react-bootstrap';
 import './Login.css';
 
 class Login extends Component {
@@ -10,11 +10,6 @@ class Login extends Component {
           <div className="card">
             <div className="card-header">
               <h3>Sign In</h3>
-              <div className="d-flex justify-content-end social_icon">
-                <span><i className="fab fa-facebook-square"></i></span>
-                <span><i className="fab fa-google-plus-square"></i></span>
-                <span><i className="fab fa-twitter-square"></i></span>
-              </div>
             </div>
             <div className="card-body">
               <form>
@@ -22,20 +17,20 @@ class Login extends Component {
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-user"></i></span>
                   </div>
-                  <input type="text" className="form-control" placeholder="username" />
+                  <input type="text" className="form-control" placeholder="Username" />
 
                 </div>
                 <div className="input-group form-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-key"></i></span>
                   </div>
-                  <input type="password" className="form-control" placeholder="password" />
+                  <input type="password" className="form-control" placeholder="Password" />
                 </div>
                 <div className="row align-items-center remember">
                   <input type="checkbox" />Remember Me
 					</div>
                 <div className="form-group">
-                  <input type="submit" value="Login" className="btn float-right login_btn" />
+                  <Button variant="outline-primary" className="submit login_btn float-right">Login</Button>
                 </div>
               </form>
             </div>
