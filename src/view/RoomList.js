@@ -22,7 +22,7 @@ class RoomList extends Component {
                   <Nav.Link eventKey="4">ANDROID</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="5">WINDOWS</Nav.Link>
+                  <Nav.Link eventKey="">WINDOWS</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
