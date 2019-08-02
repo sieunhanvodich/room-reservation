@@ -76,7 +76,7 @@
 }
 
 .react-autosuggest__suggestion--focused {
-  background-color: #0C7EAF !important;
+  background-color: #0C7EAF;
   color: #fff;
 }
 
@@ -111,10 +111,10 @@
   color: #ee0000;
   font-weight: bold;
 }
-
-.react-autosuggest__suggestion--focused .highlight {
-  color: #120000;
-} 
 .react-autosuggest__suggestion:hover{
   background-color: #0C7EAF;
+  color: #fff;
+}
+.react-autosuggest__suggestion:hover .highlight {
+  color: #120000;
 }

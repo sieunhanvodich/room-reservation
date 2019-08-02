@@ -123,6 +123,13 @@ Form.Check{
   *{
     zoom: 95%;
   }
+  .react-datepicker-popper {
+    position: absolute;
+    will-change: transform;
+    top: 383px!important;
+    left: 0px;
+    transform: translate3d(8px, -299px, 0px);
+  }
   /* .avatar {
     width: 36px;
     height: 36px;
@@ -169,7 +176,14 @@ Form.Check{
 *{
   zoom: 95%;
 }
-  /* .avatar {
+.react-datepicker-popper {
+  position: absolute;
+  will-change: transform;
+  top: 383px!important;
+  left: 0px;
+  transform: translate3d(8px, -299px, 0px);
+}
+/* .avatar {
     position: absolute;
     border: 3px solid white;
     transition: 0.2s;
