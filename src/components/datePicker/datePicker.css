@@ -4,6 +4,9 @@
   padding: 10px;
   border-radius: 5px;
 }
+.react-calendar{
+  width: 100%;
+}
 @media (min-width:366px) and (max-width:415px){
   .datePicker{
     zoom:85%;

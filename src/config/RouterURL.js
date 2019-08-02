@@ -7,7 +7,7 @@ class RouterURL extends Component {
   render() {
     return (
       <Container>
-        <Route exact path="/homeUser" component={HomeScreen} />
+        <Route exact path="/home-user" component={HomeScreen} />
       </Container>
     );
   }

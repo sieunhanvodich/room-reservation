@@ -7,7 +7,7 @@ export default class DatePickerr extends Component {
     date: new Date(),
   }
 
-  onChange = date => this.setState({ date })
+  onChange = date => this.setState({ date }, ()=>{console.log(date)})
 
   render() {
     return (
@@ -15,7 +15,7 @@ export default class DatePickerr extends Component {
         <div>
           <h3 className="title">Detail</h3>
           <hr className="hr"></hr>
-          <h5 className="title">Date: </h5>
+          <h5 className="title">Date:</h5>
         </div>
         <div className="datePicker">
           <Calendar
