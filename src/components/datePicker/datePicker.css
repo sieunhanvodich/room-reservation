@@ -1,4 +1,4 @@
-.container_datePicker{
+.container-date-picker{
   margin-top: 20px;
   background-color: #2a3f54;
   padding: 10px;
@@ -8,42 +8,35 @@
   width: 100%;
 }
 @media (min-width:366px) and (max-width:415px){
-  .datePicker{
+  .date-picker{
     zoom:85%;
   }
 }
 @media (min-width:320px) and (max-width:365px){
-  .container_datePicker{zoom: 90%}
-  .datePicker{
+  .container-date-picker{zoom: 90%}
+  .date-picker{
     zoom: 80%;
   }
 }
 @media (min-width: 561px) and (max-width:767px){
-  .datePicker{
+  .date-picker{
     zoom: 130%;
   }
 }
 @media (min-width: 301px) and (max-width:320px){
-  .datePicker{
+  .date-picker{
     zoom: 50%;
   }
 }
 @media (min-width: 251px) and (max-width:300px){
-  .datePicker{
+  .date-picker{
     zoom: 50%;
   }
-  .container_datePicker{
+  .container-date-picker{
     width: 200px;
   }
 }
-/* @media (min-width:200px) and (max-width:250px){
-  .datePicker{
-    zoom: 50%;
-  }
-  .container_datePicker{
-    width: 80%;
-  }
-} */
+
 
 .title{
   color: white;

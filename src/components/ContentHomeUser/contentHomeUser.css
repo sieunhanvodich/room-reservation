@@ -1,13 +1,4 @@
-.contentHomeUser{
-  display: flex;
-}
-@media screen and (max-width:770px) {
-  .contentHomeUser{
-    display:block;
-    align-items: center;
-    position: relative;
-  }
-}
+
 .modal-home {
   background-color: #F4F5F7;
 }
