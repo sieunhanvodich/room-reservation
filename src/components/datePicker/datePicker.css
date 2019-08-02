@@ -1,26 +1,47 @@
 .container_datePicker{
   margin-top: 20px;
-  background-color: #2A3F54;
+  background-color: #2a3f54;
   padding: 10px;
   border-radius: 5px;
 }
-/* @media (min-width:415px) and (max-width:765px){
+@media (min-width:366px) and (max-width:415px){
   .datePicker{
-    width: 500px;
-  }
-} */
-
-@media (min-width:323px) and (max-width:415px){
-  .datePicker{
-    zoom:70%;
+    zoom:85%;
   }
 }
-@media (min-width:200px) and (max-width:322px){
+@media (min-width:320px) and (max-width:365px){
   .container_datePicker{zoom: 90%}
   .datePicker{
     zoom: 80%;
   }
 }
+@media (min-width: 561px) and (max-width:767px){
+  .datePicker{
+    zoom: 130%;
+  }
+}
+@media (min-width: 301px) and (max-width:320px){
+  .datePicker{
+    zoom: 50%;
+  }
+}
+@media (min-width: 251px) and (max-width:300px){
+  .datePicker{
+    zoom: 50%;
+  }
+  .container_datePicker{
+    width: 200px;
+  }
+}
+/* @media (min-width:200px) and (max-width:250px){
+  .datePicker{
+    zoom: 50%;
+  }
+  .container_datePicker{
+    width: 80%;
+  }
+} */
+
 .title{
   color: white;
 }

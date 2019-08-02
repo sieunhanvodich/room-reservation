@@ -15,14 +15,12 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
   let input;
 
   return (
-    // <DatePicker></DatePicker>
-
     <Container>
       <Row>
-        <Col xl={3} lg={4} md={5} sm={12} xs={12}>
+        <Col xl={3} lg={4} md={7} sm={12} xs={12}>
           <DatePicker />
         </Col>
-        <Col xl={9} lg={8} md={7} xs={12} >
+        <Col xl={9} lg={8} md={5} xs={12} sm={12}>
           <h5 className="mt-3"><GoPerson />  Your Meeting</h5>
           <ListMeeting Meetings={listMeeting.own} onClickCard={(detail) => handleShow(detail)} />
           <h5 className="mt-3"><GoOrganization />  Invited Meeting</h5>
@@ -32,7 +30,6 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
               <Modal.Title>{currentDetailMeeting.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body className="ml-3">
-              {/* <h3 className="text-center"></h3> */}
               <p><h6 className="d-inline">Location: </h6>Room {currentDetailMeeting.room}</p>
               <p><h6 className="d-inline">Time: </h6>From {currentDetailMeeting.from} to {currentDetailMeeting.to}</p>
               <p><h6 className="d-inline">Requirement: </h6>{currentDetailMeeting.requirement}</p>
@@ -41,7 +38,6 @@ const ContentHomeUser = ({ listMeeting, show, handleShow, handleClose, currentDe
                 {currentDetailMeeting.isOwn ? (<p><h6 className="d-inline">Members: </h6> {currentDetailMeeting.members.length}</p>) : null}
                 {currentDetailMeeting.isOwn && currentDetailMeeting.members && currentDetailMeeting.members.map((member, index) => (
                   <li key={index} className="list-group-item">{member.name}     <span class="badge badge-light  "><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></li>
-                  // <span class="badge badge-primary">{member.name}    <span class="badge badge-light"><FaTimes onClick={() => handleRemoveMember(member.id)} /></span></span>
                 ))}
                 {currentDetailMeeting.isOwn ?
                   <Form
