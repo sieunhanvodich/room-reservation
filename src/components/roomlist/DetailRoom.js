@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Container, Image, Button,Badge } from 'react-bootstrap'
+import { Row, Col, Container, Image, Button, Badge } from 'react-bootstrap'
 import avata from '../../resources/image/room.png'
 import './DetailRoom.css'
 
 class DetailRoom extends Component {
+
   render() {
     return (
       <Container className="container">
@@ -38,8 +39,8 @@ class DetailRoom extends Component {
         </Row>
         <Row>
           <div className="describe">
-            {/* <Button variant="success">Book</Button> */}
             <h3 className="description">Description</h3>
+            <h1>{this.props.id}</h1>
             <div className="detail">
               <div>Position: Floor 8</div>
               <div>Capacity: 80 </div>
@@ -48,14 +49,14 @@ class DetailRoom extends Component {
                   Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
                   fabrics and inlaid
                   wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p>
+
               <div>
-      
                 <Badge variant="success">Booked</Badge>
                 <Badge variant="danger">Daily Book</Badge>
                 <Badge variant="warning">Weekly Book</Badge>
                 <Badge variant="info">Monthly Book</Badge>
                 <Badge variant="secondary">Free</Badge>
-    
+
               </div>
             </div>
 
@@ -67,3 +68,4 @@ class DetailRoom extends Component {
 }
 
 export default DetailRoom;
+

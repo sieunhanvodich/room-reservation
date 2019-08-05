@@ -10,7 +10,7 @@ class RoomList extends Component {
   render() {
     return (
      
-      <div>
+      <div className="title">
       <RcQueueAnim delay={200}>
         <h1 key="1" className="headname">ROOM LIST</h1>
         <div key="2" className="head">
@@ -26,3 +26,4 @@ class RoomList extends Component {
 }
 
 export default RoomList;
+

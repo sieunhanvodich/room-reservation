@@ -9,6 +9,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.title{
+  text-align: center;
+}
 .btn-submit{
   margin-left: 5px;
 }
@@ -27,3 +30,4 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
