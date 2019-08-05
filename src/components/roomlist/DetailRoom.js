@@ -37,14 +37,14 @@ class DetailRoom extends Component {
           <div className="describe">
             {/* <Button variant="success">Book</Button> */}
             <h3>Description</h3>
-            <div className="">
+            <div className="detail">
               <div>Position: Floor 8</div>
               <div>Capacity: 80 </div>
               <div>Detail: </div>
-              {/* <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
+              <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
                   Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
                   fabrics and inlaid
-                  wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p> */}
+                  wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p>
             </div>
           </div>
         </Row>
