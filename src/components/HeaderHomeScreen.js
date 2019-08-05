@@ -22,7 +22,7 @@ class HeaderHomeScreen extends Component {
           <Nav className="mr-auto">
             <Nav.Link href="/home-user">Home</Nav.Link>
             <Nav.Link href="#pricing">Book Room</Nav.Link>
-            <Nav.Link href="#pricing">List Room</Nav.Link>
+            <Nav.Link href="/room-list">List Room</Nav.Link>
           </Nav>
           <Navbar.Brand className="infor-user">
             <img
