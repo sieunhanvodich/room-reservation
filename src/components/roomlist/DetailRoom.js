@@ -38,29 +38,31 @@ class DetailRoom extends Component {
           </Col>
         </Row>
         <Row>
-          <div className="describe">
-            <h3 className="description">Description</h3>
-            <h1>{this.props.id}</h1>
-            <div className="detail">
-              <div>Position: Floor 8</div>
-              <div>Capacity: 80 </div>
-              <div>Detail: </div>
-              <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
-                  Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
-                  fabrics and inlaid
+          <Col xs={12}>
+          </Col>
+            <div className="describe">
+              <h3 className="description">Description</h3>
+              <h1>{this.props.id}</h1>
+              <div className="detail">
+                <div>Position: Floor 8</div>
+                <div>Capacity: 80 </div>
+                <div>Detail: </div>
+                <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
+                    Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
+                    fabrics and inlaid
                   wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p>
 
-              <div>
-                <Badge variant="success">Booked</Badge>
-                <Badge variant="danger">Daily Book</Badge>
-                <Badge variant="warning">Weekly Book</Badge>
-                <Badge variant="info">Monthly Book</Badge>
-                <Badge variant="secondary">Free</Badge>
+                <div>
+                  <Badge variant="success">Booked</Badge>
+                  <Badge variant="danger">Daily Book</Badge>
+                  <Badge variant="warning">Weekly Book</Badge>
+                  <Badge variant="info">Monthly Book</Badge>
+                  <Badge variant="secondary">Free</Badge>
 
+                </div>
               </div>
-            </div>
 
-          </div>
+            </div>
         </Row>
       </Container>
     );
