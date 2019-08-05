@@ -5,13 +5,12 @@ html, body {
   height: 100%;
 }
 
-.card {
+.card-login {
   height: 370px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
   background-color: white !important;
-  box-shadow: 0 0 50px #ededed;
 }
 
 .social_icon span {

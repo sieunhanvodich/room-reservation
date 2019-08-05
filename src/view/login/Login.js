@@ -7,7 +7,7 @@ class Login extends Component {
     return (
       <div className="container justify-content-center align-self-center d-flex h-100">
         <div className="d-flex ">
-          <div className="card">
+          <div className="card card-login">
             <div className="card-header">
               <h3>Sign In</h3>
             </div>
