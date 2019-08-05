@@ -4,9 +4,6 @@ import Select from 'react-select';
 import { Image} from 'react-bootstrap';
 import './MultiSelect';
 
-// firstName: 'Nguyễn Tùng', lastName: 'Dương', value: 'duong', 
-// firstName: 'Bùi Quang', lastName: 'Linh', value: 'linh',
-
 const peopleOption = [
   { firstName: 'Nguyễn Tùng', lastName: 'Dương', value: 'duong', label: 'duong.nguyentung@vti.com', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/mtnmissy/48.jpg' },
   { firstName: 'Nhữ Văn', lastName: 'Duy', value: 'duy', label: 'duy.nhuvan@vti.com.vn', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/steveodom/48.jpg' },
@@ -72,22 +69,7 @@ const getURL = (value) => {
   }
 }
 
-// Get full name
-const getFullName = (value) => {
-  for (let i = 0; i < peopleOption.length; i++) {
-    if (peopleOption[i].value === value) {
-
-      let firstName = peopleOption[i].firstName
-      let lastName = peopleOption[i].lastName
-      console.log(firstName + ' ' + lastName)
-      return `${firstName} ${lastName}`;
-    }
-
-  }
-}
-
 const CustomOption = (params) => {
-  console.log(params)
   if (!params.isDisabled) {
     return (
       <div {...params.innerProps} className="d-flex align-items-center">
@@ -111,33 +93,12 @@ const CustomOption = (params) => {
   }
 }
 
-
-// const CustomOption = (params) =>
-//   !params.isDisabled ? (
-//     <div {...params.innerProps} className=" d-flex align-items-center">
-//         <div className="float-left ml-2">
-//           <Image
-//             width={45}
-//             height={45}
-//             src={logo}
-//             alt="Generic placeholder" 
-//             roundedCircle 
-//           />
-//         </div>
-//         <div className="float-left ml-4">
-//           <span>{params.data.label}</span>
-//         </div>
-//         <div className="clearfix"></div>
-//     </div>
-//   ) : null;
-
 class MultiSelect extends React.Component {
   render() {
     return (
       <Select
         components={{ Option: CustomOption }}
         closeMenuOnSelect={false}
-        // defaultValue={[peopleOption[0], peopleOption[1]]}
         isMulti
         options={peopleOption}
         styles={peopleStyles}

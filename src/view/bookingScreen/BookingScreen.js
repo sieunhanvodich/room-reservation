@@ -10,7 +10,6 @@ import logo3 from '../../resources/images/gai-xinh-3.jpg';
 import logo4 from '../../resources/images/gai-xinh-4.jpg';
 import logo5 from '../../resources/images/gai-xinh-5.jpg';
 import plus from '../../resources/images/icon-plus.jpg';
-// import AutoComplete from '../../components/autoComplete/AutoComplete';
 class BookingScreen extends Component {
   constructor(props) {
     super(props);
@@ -93,7 +92,6 @@ class BookingScreen extends Component {
             </Form.Group>
             <Form.Group as={Col} controlId="host">
               <Form.Label>Host</Form.Label>
-              {/* <Form.Control type="text" placeholder="Host" /> */}
               <AutoComplete placeholder="Host" data></AutoComplete>
             </Form.Group>
           </Form.Row>
@@ -110,7 +108,6 @@ class BookingScreen extends Component {
             </Form.Group>
             <Form.Group as={Col} controlId="project">
               <Form.Label>Project</Form.Label>
-              {/* <Form.Control type="text" placeholder="Project" /> */}
               <AutoComplete placeholder="Project" data></AutoComplete>
             </Form.Group>
           </Form.Row>
@@ -122,7 +119,6 @@ class BookingScreen extends Component {
           </Form.Row>
           <Form.Row >
             <Form.Group as={Col} >
-              {/* <Form.Label>Frequency</Form.Label> */}
               <Form.Check
                 defaultChecked
                 custom
@@ -176,19 +172,6 @@ class BookingScreen extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            {/* <Form.Group as={Col}>
-              <Form.Label>Invited</Form.Label>
-              <Image src={logo1} className="avatar" id="avatar-1" roundedCircle />
-              <Image src={logo2} className="avatar" id="avatar-2" roundedCircle />
-              <Image src={logo3} className="avatar" id="avatar-3" roundedCircle />
-              <Image src={logo4} className="avatar" id="avatar-4" roundedCircle />
-              <Image src={logo5} className="avatar" id="avatar-5" roundedCircle />
-              <Image src={plus} className="avatar" id="avatar-6" roundedCircle onClick={() => this.setModalShow()} />
-              <MyVerticallyCenteredModal
-                show={this.state.modalShow}
-                onHide={() => this.setModalShow()}
-              />
-            </Form.Group> */}
             <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
               <ButtonToolbar>
                 <Button variant="outline-secondary" className="cancel">Cancel</Button>

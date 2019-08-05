@@ -47,13 +47,10 @@ const getSuggestions = (value) => {
 }
 
 const getSuggestionValue=(suggestion)=>{
-  // console.log(suggestion)
-  // return `${suggestion.first} ${suggestion.last}`;
   return `${suggestion.email}`;
 }
 
 const renderSuggestion = (suggestion, { query }) => {
-  // console.log('suggestion', suggestion)
   const suggestionText = `${suggestion.first} ${suggestion.last}`;
   var AutosuggestHighlightMatch = require('autosuggest-highlight/match');
   var AutosuggestHighlightParse = require('autosuggest-highlight/parse');
