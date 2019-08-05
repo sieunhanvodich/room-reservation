@@ -17,18 +17,15 @@ html, body {
 .social_icon span {
   font-size: 60px;
   margin-left: 10px;
-  /* color: #FFC312; */
   color:#007bff;
 }
 
 .social_icon span:hover {
-  /* color: white; */
   color: black;
   cursor: pointer;
 }
 
 .card-header h3 {
-  /* color: white; */
   color: black;
 }
 
