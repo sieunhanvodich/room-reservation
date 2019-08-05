@@ -1,0 +1,14 @@
+.headname{
+  font-size: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  background: url('https://s3.envato.com/files/242464844/preview.jpg');
+  background-size: cover;
+  background-clip: content-box;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button{
+  margin-left: 5px;
+}
