@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import RouterURL from './config/RouterURL';
+import './App.css'
+import RouterURL from './config/RouterURL'
+import { BrowserRouter as Router } from "react-router-dom";
+import HeaderHomeScreen from './components/HeaderHomeScreen';
 
-export default class App extends Component {
+class App extends Component {
+
   render() {
     return (
       <Router>
+        <HeaderHomeScreen />
         <RouterURL />
       </Router>
+
     )
   }
 }
 
+export default App
