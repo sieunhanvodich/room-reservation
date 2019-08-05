@@ -1,27 +1,34 @@
 import React, { Component, useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
+import DetailRoom from './DetailRoom';
 class Contents extends Component {
-    render() {
-        function ControlledTabs() {
-            const [key, setKey] = useState('home');
-            return (
-                <Tabs id="controlled-tab-example" activeKey={key} onSelect={k => setKey(k)}>
-                    <Tab eventKey="home" title="IOT">
-                        <p>aaaaaa</p>
-                    </Tab>
-                    <Tab eventKey="profile" title="IOS">
-                        <p>aaaaaa</p>
-                    </Tab>
-                    <Tab eventKey="contact" title="AWS">
-                        <p>aaaaaa</p>
-                    </Tab>
-                </Tabs>
-            );
-        }
-        return (
-            <ControlledTabs />
-        );
+  render() {
+    function ControlledTabs() {
+      const [key, setKey] = useState('home');
+      return (
+        <Tabs id="controlled-tab-example" activeKey={key} onSelect={k => setKey(k)}>
+          <Tab eventKey="home" title="IOT">
+            <DetailRoom />
+          </Tab>
+          <Tab eventKey="1" title="IOS">
+            <DetailRoom />
+          </Tab>
+          <Tab eventKey="2" title="AWS">
+            <DetailRoom />
+          </Tab>
+          <Tab eventKey="3" title="WINDOWS">
+            <DetailRoom />
+          </Tab>
+          <Tab eventKey="4" title="ANDROID">
+            <DetailRoom />
+          </Tab>
+        </Tabs>
+      );
     }
+    return (
+      <ControlledTabs />
+    );
+  }
 }
 
 export default Contents;
