@@ -13,9 +13,9 @@ class RoomList extends Component {
       <div>
       <RcQueueAnim delay={200}>
         <h1 key="1" className="headname">ROOM LIST</h1>
-        <div key="2">
+        <div key="2" className="head">
           <Datepickerr />
-          <Button className="button" variant="info">Submit</Button>
+          <Button className="btn-submit" variant="info">Submit</Button>
         </div>
         <Contents key="3"/>
         </RcQueueAnim>

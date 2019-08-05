@@ -9,6 +9,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.button{
+.btn-submit{
   margin-left: 5px;
 }
+.head{
+  position: relative;
+  z-index: 1;
+}
+
