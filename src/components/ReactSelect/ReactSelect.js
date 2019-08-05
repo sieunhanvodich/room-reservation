@@ -1,20 +1,3 @@
-// import React from 'react';
-// import Select from 'react-select';
-// console.log(Select);
-// const options = [
-//     { value: 'chocolate', label: 'Chocolate' },
-//     { value: 'strawberry', label: 'Strawberry' },
-//     { value: 'vanilla', label: 'Vanilla' }
-// ];  
-// const ReactSelect = () => {
-//     // console.log(Select);
-//     return (<Select 
-//         options={options}
-//         isMulti
-//         />)
-// }
-
-// export default ReactSelect; 
 import React, { Component } from 'react';
 
 import CreatableSelect from 'react-select/creatable';
@@ -34,10 +17,6 @@ export default class CreatableInputOnly extends Component {
     value: [],
   };
   handleChange = (value, actionMeta) => {
-    console.group('Value Changed');
-    console.log(value);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
     this.setState({ value });
   };
   handleInputChange = (inputValue) => {

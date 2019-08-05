@@ -8,4 +8,4 @@ const allReducers = combineReducers({
   home
 })
 
-export default allReducers
+export default allReducers;
