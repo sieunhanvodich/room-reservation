@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import user from '../resources/img/user.png'
 import logo from '../resources/img/reserve.png'
 import { Nav, Navbar } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class HeaderHomeScreen extends Component {
 
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand href="/">
+        <Link className="navbar-brand" to="/home-user">
           <img
             src={logo}
             width="150"
@@ -16,13 +17,13 @@ class HeaderHomeScreen extends Component {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/home-user">Home</Nav.Link>
-            <Nav.Link href="#pricing">Book Room</Nav.Link>
-            <Nav.Link href="/room-list">List Room</Nav.Link>
+            <Link className="nav-link" to="/home-user">Home</Link>
+            <Link className="nav-link" to="/booking-screen">Book Room</Link>
+            <Link className="nav-link" to="/room-list">List Room</Link>
           </Nav>
           <Navbar.Brand className="infor-user">
             <img

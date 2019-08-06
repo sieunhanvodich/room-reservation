@@ -12,7 +12,7 @@ class RoomList extends Component {
       <div className="title-roomlist">
         <RcQueueAnim delay={200}>
           <h1 key="1" className="headname">ROOM LIST</h1>
-          <div key="2" className="head">
+          <div key="2" className="head" >
             <Datepickerr />
             <Button className="btn-submit" variant="info">Submit</Button>
           </div>

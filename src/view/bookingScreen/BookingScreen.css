@@ -1,0 +1,140 @@
+.time .react-datepicker {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #aeaeae;
+  border-radius: 0.3rem;
+  display: inline-block;
+  position: relative;
+  width: 131px;
+}
+.time .react-datepicker__time-container {
+  float: right;
+  border-left: 1px solid #aeaeae;
+  width: 100%!important;
+}
+.time .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 100%!important;
+  overflow-x: hidden;
+  margin: 0 auto;
+  text-align: center;
+}
+.datepicker-wrapper .react-datepicker__input-container,.datepicker-wrapper .react-datepicker-wrapper{
+  width: 100%;
+}
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
+  width: 100%;
+}
+.datepicker-booking {
+  display: block;
+  width: 100% !important;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  outline: none;
+}
+.datepicker-booking:focus {
+  border: 1px solid #80bdff !important;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.form {
+  width: 100%;
+  padding: 40px;
+  border: 1px solid #ededed;
+  box-shadow: 0 0 30px #ededed;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0;
+}
+
+button{
+  margin-left: 10px;
+}
+Form.Check{
+  width: 100px;
+}
+.avatar {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  border: 3px solid white;
+  transition: 0.2s;
+  top: 45px;
+}
+
+.avatar:hover {
+  transform: scale(1.3)translate(0%, -10%);
+}
+
+#avatar-1:hover{
+  z-index: 9999;
+}
+#avatar-2 {
+  left: 2.5%;
+  z-index: 100;
+}
+#avatar-2:hover{
+  z-index: 9999;
+}
+#avatar-3 {
+  left: 4.5%;
+  z-index: 200;
+}
+#avatar-3:hover{
+  z-index: 9999;
+}
+#avatar-4 {
+  left: 6.5%;
+  z-index: 300;
+}
+#avatar-4:hover{
+  z-index: 9999;
+}
+#avatar-5 {
+  left: 8.5%;
+  z-index: 400;
+}
+#avatar-5:hover{
+  z-index: 9999;
+}
+#avatar-6 {
+  left: 10.5%;
+  z-index: 500;
+}
+@media only screen and (min-width:350px) and (max-width: 450px){
+  *{
+    zoom: 95%;
+  }
+  .react-datepicker-popper {
+    position: absolute;
+    will-change: transform;
+    top: 383px!important;
+    left: 0px;
+    transform: translate3d(8px, -299px, 0px);
+  }
+}
+.react-datepicker-wrapper {
+  border: none;
+}
+.react-autosuggest__container .react-autosuggest__input:focus{
+  border: 1px solid #80bdff !important;
+}
+

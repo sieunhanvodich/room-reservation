@@ -1,0 +1,8 @@
+.avatar {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  border: 3px solid white;
+  transition: 0.2s;
+  top: 45px;
+}
