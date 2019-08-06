@@ -8,10 +8,8 @@ import RouterURL from './config/RouterURL'
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
     UserService.getUsersInfo()
       .then(res => {
-        console.log(res)
         this.props.saveUserInfo(res)
       })
   }
