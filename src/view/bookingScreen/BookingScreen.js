@@ -50,24 +50,28 @@ class BookingScreen extends Component {
           <Form.Row>
             <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
               <Form.Label>Day</Form.Label>
-              <DatePicker className="datePicker"
-                dateFormat="dd/MM/yyyy"
-                selected={this.state.date}
-                onChange={this.handleChange}
-              />
+             <div className="datepicker-wrapper">
+                <DatePicker className="datepicker-booking"
+                  dateFormat="dd/MM/yyyy"
+                  selected={this.state.date}
+                  onChange={this.handleChange}
+                />
+             </div>
             </Form.Group>
             <Form.Group as={Col} className="time" controlId="time">
               <Form.Label>Time</Form.Label>
-              <DatePicker
-                className="datePicker"
-                selected={this.state.date}
-                onChange={this.handleChange}
-                showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={30}
-                dateFormat="h:mm aa"
-                timeCaption="Time"
-              />
+             <div className="datepicker-wrapper">
+                <DatePicker
+                  className="datepicker-booking"
+                  selected={this.state.date}
+                  onChange={this.handleChange}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={30}
+                  dateFormat="h:mm aa"
+                  timeCaption="Time"
+                />
+             </div>
             </Form.Group>
             <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
               <Form.Label>Duration</Form.Label>

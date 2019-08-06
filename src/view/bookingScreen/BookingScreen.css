@@ -20,13 +20,13 @@
   margin: 0 auto;
   text-align: center;
 }
-.react-datepicker__input-container,.react-datepicker-wrapper{
+.datepicker-wrapper .react-datepicker__input-container,.datepicker-wrapper .react-datepicker-wrapper{
   width: 100%;
 }
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
   width: 100%;
 }
-.datePicker {
+.datepicker-booking {
   display: block;
   width: 100% !important;
   height: calc(1.5em + .75rem + 2px);
@@ -42,7 +42,7 @@
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   outline: none;
 }
-.datePicker:focus {
+.datepicker-booking:focus {
   border: 1px solid #80bdff !important;
 }
 
@@ -130,5 +130,11 @@ Form.Check{
     left: 0px;
     transform: translate3d(8px, -299px, 0px);
   }
+}
+.react-datepicker-wrapper {
+  border: none;
+}
+.react-autosuggest__container .react-autosuggest__input:focus{
+  border: 1px solid #80bdff !important;
 }
 

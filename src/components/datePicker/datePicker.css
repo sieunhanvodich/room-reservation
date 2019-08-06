@@ -1,0 +1,47 @@
+.container-date-picker{
+  margin-top: 20px;
+  background-color: #2a3f54;
+  padding: 10px;
+  border-radius: 5px;
+}
+.react-calendar{
+  width: 100%;
+}
+@media (min-width:366px) and (max-width:415px){
+  .date-picker{
+    zoom:85%;
+  }
+}
+@media (min-width:320px) and (max-width:365px){
+  .container-date-picker{zoom: 90%}
+  .date-picker{
+    zoom: 80%;
+  }
+}
+@media (min-width: 561px) and (max-width:767px){
+  .date-picker{
+    zoom: 130%;
+  }
+}
+@media (min-width: 301px) and (max-width:320px){
+  .date-picker{
+    zoom: 50%;
+  }
+}
+@media (min-width: 251px) and (max-width:300px){
+  .date-picker{
+    zoom: 50%;
+  }
+  .container-date-picker{
+    width: 200px;
+  }
+}
+
+
+.title{
+  color: white;
+}
+.hr{
+  border: 0.5px solid white;
+  
+}

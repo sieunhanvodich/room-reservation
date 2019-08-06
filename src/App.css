@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+.infor-user{
+  display: flex;
+  align-items: center;
 }
 html,body,#root,#root>div{
   height: 100%;
