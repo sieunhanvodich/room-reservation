@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Image, Container, Col, Button, ButtonToolbar } from 'react-bootstrap';
 import MyVerticallyCenteredModal from '../../components/modal/Modal';
+import Message from '../../components/message/Message';
 import AutoComplete from '../../components/autoComplete/AutoComplete';
 import './BookingScreen.css';
 import DatePicker from "react-datepicker";
@@ -11,14 +12,32 @@ import logo3 from '../../resources/images/gai-xinh-3.jpg';
 import logo4 from '../../resources/images/gai-xinh-4.jpg';
 import logo5 from '../../resources/images/gai-xinh-5.jpg';
 import plus from '../../resources/images/icon-plus.jpg';
+
 class BookingScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: Date.now(),
-      modalShow: false
+      date: new Date(Date.now()),
+      modalShow: false,
+      messageShow: false
     };
     this.handleChange = this.handleChange.bind(this);
+    this.roundingHours()
+  }
+
+  //Rounding hours
+  roundingHours() {
+    let dt = this.state.date
+    if (dt.getMinutes() < 30) {
+      dt.setMinutes(30)
+    }
+    else if(dt.getMinutes() > 30){
+      dt.setHours(dt.getHours() + 1)
+      dt.setMinutes(0)
+    }
+     this.setState({
+      date: this.state.date
+    })
   }
 
   //Set modal show
@@ -28,13 +47,19 @@ class BookingScreen extends Component {
     })
   }
 
+  //Handle show message when click book button 
+  setMessageShow() {
+    this.setState({
+      messageShow: !this.state.messageShow
+    })
+  }
+
   //Handle change date event
   handleChange(date) {
     this.setState({
       date: date
     });
   }
-
 
   render() {
     return (
@@ -185,7 +210,11 @@ class BookingScreen extends Component {
               <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
                 <ButtonToolbar>
                   <Button variant="outline-secondary" className="cancel">Cancel</Button>
-                  <Button variant="outline-primary" className="submit">Book</Button>
+                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} className="submit">Book</Button>
+                  <Message
+                    show={this.state.messageShow}
+                    onHide={() => this.setMessageShow()}
+                  />
                 </ButtonToolbar>
               </Form.Group>
             </Form.Row>
