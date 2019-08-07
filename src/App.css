@@ -6,4 +6,20 @@ html,body,#root,#root>div{
   height: 100%;
   width: 100%!important;
 }
+/* #root>div{
+  height: auto;
+} */
+#root>div{
+  height: 800px;
+}
+@media only screen and (min-width:350px) and (max-width: 800px){
+  #root>div{
+    height: 690px;
+  }
+}
+@media only screen and (max-width: 320px){
+  #root>div{
+    height: 500px;
+  }
+}
 

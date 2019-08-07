@@ -9,7 +9,7 @@ import BookingScreen from '../view/bookingScreen/BookingScreen';
 class RouterURL extends Component {
   render() {
     return (
-      <Container >
+      <Container>
         <Route path="/room-list" component={RoomList} />
         <Route exact path="/home-user" component={HomeScreen} />
         <Route path="/login" component={Login} />

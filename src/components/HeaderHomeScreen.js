@@ -23,7 +23,7 @@ class HeaderHomeScreen extends Component {
           <Nav className="mr-auto">
             <Link className="nav-link" to="/home-user">Home</Link>
             <Link className="nav-link" to="/booking-screen">Book Room</Link>
-            <Link className="nav-link" to="/room-list">List Room</Link>
+            <Link className="nav-link" to="/room-list">Room List</Link>
           </Nav>
           <Navbar.Brand className="infor-user">
             <img

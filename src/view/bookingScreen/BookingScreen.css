@@ -1,4 +1,4 @@
-.time .react-datepicker {
+.start-time .react-datepicker, .end-time .react-datepicker {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
   background-color: #fff;
@@ -9,12 +9,13 @@
   position: relative;
   width: 131px;
 }
-.time .react-datepicker__time-container {
+.start-time .react-datepicker__time-container, .end-time .react-datepicker__time-container {
   float: right;
   border-left: 1px solid #aeaeae;
   width: 100%!important;
 }
-.time .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+.start-time .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box,
+.end-time .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
   width: 100%!important;
   overflow-x: hidden;
   margin: 0 auto;

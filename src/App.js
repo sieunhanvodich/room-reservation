@@ -10,8 +10,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <HeaderHomeScreen />
-        <RouterURL />
+          <HeaderHomeScreen />
+          <RouterURL />
       </Router>
 
     )
