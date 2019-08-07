@@ -138,4 +138,7 @@ Form.Check{
 .react-autosuggest__container .react-autosuggest__input:focus{
   border: 1px solid #80bdff !important;
 }
-
+button:focus{
+  box-shadow: none !important;
+  outline: none;
+}
