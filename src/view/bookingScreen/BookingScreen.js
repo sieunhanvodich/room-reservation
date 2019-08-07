@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Image, Container, Col, Button, ButtonToolbar } from 'react-bootstrap';
+// import {ValidatedInput} from 'react-bootstrap-validation';
 import MyVerticallyCenteredModal from '../../components/modal/Modal';
 import Message from '../../components/message/Message';
 import AutoComplete from '../../components/autoComplete/AutoComplete';
@@ -18,26 +19,36 @@ class BookingScreen extends Component {
     super(props);
     this.state = {
       date: new Date(Date.now()),
+      start: new Date(Date.now()),
+      end: new Date(Date.now() + 3600000),
       modalShow: false,
       messageShow: false
     };
     this.handleChange = this.handleChange.bind(this);
-    this.roundingHours()
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.roundingTime(this.state.start)
+    this.roundingTime(this.state.end)
+  }
+
+  //Set rounding hours for start, end time
+  setRoundingStartEnd(start, end) {
+    this.setState({
+      start: start,
+      end: end
+    })
   }
 
   //Rounding hours
-  roundingHours() {
-    let dt = this.state.date
+  roundingTime(dt) {
     if (dt.getMinutes() < 30) {
       dt.setMinutes(30)
     }
-    else if(dt.getMinutes() > 30){
+    else if (dt.getMinutes() > 30) {
       dt.setHours(dt.getHours() + 1)
       dt.setMinutes(0)
     }
-     this.setState({
-      date: this.state.date
-    })
+    return dt
   }
 
   //Set modal show
@@ -49,15 +60,31 @@ class BookingScreen extends Component {
 
   //Handle show message when click book button 
   setMessageShow() {
-    this.setState({
-      messageShow: !this.state.messageShow
-    })
+    if (false) {
+      this.setState({
+        messageShow: !this.state.messageShow
+      })
+    }
   }
 
   //Handle change date event
   handleChange(date) {
     this.setState({
       date: date
+    });
+  }
+
+  //Handle change date event
+  handleChange1(start) {
+    this.setState({
+      start: start
+    });
+  }
+
+  //Handle change date event
+  handleChange2(end) {
+    this.setState({
+      end: end
     });
   }
 
@@ -71,7 +98,7 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group key="2" as={Col} controlId="meetingName">
                 <Form.Label>Meeting Name</Form.Label>
-                <Form.Control type="text" placeholder="Meeting Name" />
+                <Form.Control type="text" required placeholder="Meeting Name" />
               </Form.Group>
             </Form.Row>
             <Form.Row>
@@ -90,8 +117,8 @@ class BookingScreen extends Component {
                 <div className="datepicker-wrapper">
                   <DatePicker
                     className="datepicker-booking"
-                    selected={this.state.date}
-                    onChange={this.handleChange}
+                    selected={this.state.start}
+                    onChange={this.handleChange1}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
@@ -105,8 +132,8 @@ class BookingScreen extends Component {
                 <div className="datepicker-wrapper">
                   <DatePicker
                     className="datepicker-booking"
-                    selected={this.state.date}
-                    onChange={this.handleChange}
+                    selected={this.state.end}
+                    onChange={this.handleChange2}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
@@ -149,7 +176,7 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descripton</Form.Label>
-                <Form.Control as="textarea" rows="3" placeholder="Description" />
+                <Form.Control as="textarea" rows="3" required placeholder="Description" />
               </Form.Group>
             </Form.Row>
             <Form.Row >
@@ -210,7 +237,7 @@ class BookingScreen extends Component {
               <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
                 <ButtonToolbar>
                   <Button variant="outline-secondary" className="cancel">Cancel</Button>
-                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} className="submit">Book</Button>
+                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} type="submit" className="submit" >Book</Button>
                   <Message
                     show={this.state.messageShow}
                     onHide={() => this.setMessageShow()}
