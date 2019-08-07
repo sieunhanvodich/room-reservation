@@ -15,10 +15,10 @@ class ContentHomeUser extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xl={3} lg={4} md={7} sm={12} xs={12}>
+          <Col xl={4} lg={4} md={7} sm={12} xs={12}>
             <DatePicker />
           </Col>
-          <Col xl={9} lg={8} md={5} xs={12} sm={12}>
+          <Col xl={8} lg={8} md={5} xs={12} sm={12}>
             <h5 className="mt-3"><GoPerson />  Your Meeting</h5>
             <ListMeeting Meetings={this.props.listMeeting.own} onClickCard={(detail) => this.props.handleShow(detail)} />
             <h5 className="mt-3"><GoOrganization />  Invited Meeting</h5>
