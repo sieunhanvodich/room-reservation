@@ -35,7 +35,7 @@ class ContentHomeUser extends React.Component {
                 <ul className="list-group">
                   {this.props.currentDetailMeeting.isOwn ? (<p>Members: {this.props.currentDetailMeeting.members.length}</p>) : null}
                   {this.props.currentDetailMeeting.isOwn && this.props.currentDetailMeeting.members && this.props.currentDetailMeeting.members.map((member, index) => (
-                    <li key={index} className="list-group-item">{member.name}     <span className="badge badge-light  "><FaTimes onClick={() => this.props.handleRemoveMember(member.id)} /></span></li>
+                    <li key={index} className="list-group-item">{member.name}<span className="badge badge-light  "><FaTimes onClick={() => this.props.handleRemoveMember(member.id)} /></span></li>
                   ))}
                   {this.props.currentDetailMeeting.isOwn ?
                     <Form
