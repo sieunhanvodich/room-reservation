@@ -2,9 +2,6 @@ import React from 'react';
 import Meeting from '../Meeting/Meeting';
 
 class ListMeeting extends React.Component {
-    constructor(props) {
-        super(props);
-    };
     render() {
         return (
             <div className="d-flex flex-wrap">
