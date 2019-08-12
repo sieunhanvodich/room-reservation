@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import './Login.css';
-import axios from 'axios';
+
 
 class Login extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    // reset login status
+    // this.props.logout();
+
     this.state = {
-      username: "",
-      password: ""
-    }
+      username: '',
+      password: '',
+      submitted: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -18,29 +27,43 @@ class Login extends Component {
     })
   }
 
-  onSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
-
-    const form = {
-      username: this.state.username,
-      password: this.state.password
+    this.setState({ submitted: true });
+    localStorage.setItem('token', 'abcdefghiklmn')
+    const { username, password } = this.state;
+    if (username && password) {
+      this.props.login(username, password);
     }
-
-    axios({
-      method: 'post',
-      url: 'http://10.1.45.111:3000/login',
-      data: form
-    })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-        
-      });
   }
 
+
+
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const form = {
+  //     username: this.state.username,
+  //     password: this.state.password
+  //   }
+
+  //   axios({
+  //     method: 'post',
+  //     url: 'http://10.1.45.111:3000/login',
+  //     data: form
+  //   })
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+
+  //     });
+  // }
+
   render() {
+    const { loggingIn } = this.props;
+    const { username, password, submitted } = this.state;
     return (
       <div className="container justify-content-center align-self-center d-flex h-100">
         <div className="d-flex ">
@@ -54,20 +77,25 @@ class Login extends Component {
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-user"></i></span>
                   </div>
-                  <input type="text" className="form-control" onChange={e => this.handleChange(e)} name='username' placeholder="Username" />
-
+                  <input type="text" className="form-control" onChange={e => this.handleChange(e)} name='username' value={username} placeholder="Username" />
                 </div>
+                {submitted && !username &&
+                  <div className="input-group form-group help-block">Username is required</div>
+                }
                 <div className="input-group form-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-key"></i></span>
                   </div>
-                  <input type="password" className="form-control" onChange={e => this.handleChange(e)} name='password' placeholder="Password" />
+                  <input type="password" className="form-control" onChange={e => this.handleChange(e)} name='password' value={password} placeholder="Password" />
                 </div>
+                {submitted && !password &&
+                  <div className="input-group form-group help-block">Password is required</div>
+                }
                 <div className="row align-items-center remember">
                   <input type="checkbox" />Remember Me
 					</div>
                 <div className="form-group">
-                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={(e) => this.onSubmit(e)}>Login</Button>
+                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={(e) => this.handleSubmit(e)}>Login</Button>
                 </div>
               </form>
             </div>
@@ -86,4 +114,16 @@ class Login extends Component {
   }
 }
 
+function mapState(state) {
+  const { loggingIn } = state.authentication;
+  return { loggingIn };
+}
+
+const actionCreators = {
+  login: authentication.login,
+  logout: authentication.logout
+};
+
+const connectedLogin = connect(mapState, actionCreators)(Login);
+export { connectedLogin as Login };
 export default Login;
