@@ -60,7 +60,7 @@ class BookingScreen extends Component {
 
   //Handle show message when click book button 
   setMessageShow() {
-    if (false) {
+    if (true) {
       this.setState({
         messageShow: !this.state.messageShow
       })
@@ -98,7 +98,7 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group key="2" as={Col} controlId="meetingName">
                 <Form.Label>Meeting Name</Form.Label>
-                <Form.Control type="text" required placeholder="Meeting Name" />
+                <Form.Control type="text" placeholder="Meeting Name" />
               </Form.Group>
             </Form.Row>
             <Form.Row>
@@ -176,7 +176,7 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descripton</Form.Label>
-                <Form.Control as="textarea" rows="3" required placeholder="Description" />
+                <Form.Control as="textarea" rows="3" placeholder="Description" />
               </Form.Group>
             </Form.Row>
             <Form.Row >
@@ -237,7 +237,7 @@ class BookingScreen extends Component {
               <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
                 <ButtonToolbar>
                   <Button variant="outline-secondary" className="cancel">Cancel</Button>
-                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} type="submit" className="submit" >Book</Button>
+                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} className="submit" >Book</Button>
                   <Message
                     show={this.state.messageShow}
                     onHide={() => this.setMessageShow()}

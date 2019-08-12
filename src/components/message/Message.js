@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Col, Button, ButtonToolbar } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import './Message.css';
 
