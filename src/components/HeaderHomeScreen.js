@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import user from '../resources/img/user.png'
 import logo from '../resources/img/reserve.png'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar,DropdownButton,Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './HeaderHomeScreen.css'
 
 class HeaderHomeScreen extends Component {
- 
+
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
@@ -36,7 +36,7 @@ class HeaderHomeScreen extends Component {
               alt=""
             />
             {/* <Nav.Link style={{ color: 'white', fontSize: '15px' }}>DuyNhu</Nav.Link> */}
-            <div className="btn-group">
+            {/* <div className="btn-group">
               <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Action
               </button>
@@ -47,7 +47,12 @@ class HeaderHomeScreen extends Component {
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item" href="#">Separated link</a>
               </div>
-            </div>
+            </div> */}
+            <DropdownButton id="dropdown-basic-button" title="DuyNhu">
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton>
           </div>
         </Navbar.Collapse>
       </Navbar>
