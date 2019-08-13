@@ -24,9 +24,9 @@ class BookingScreen extends Component {
       modalShow: false,
       messageShow: false
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChange1 = this.handleChange1.bind(this);
-    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChangeDate = this.handleChangeDate.bind(this);
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.roundingTime(this.state.start)
     this.roundingTime(this.state.end)
   }
@@ -68,21 +68,21 @@ class BookingScreen extends Component {
   }
 
   //Handle change date event
-  handleChange(date) {
+  handleChangeDate(date) {
     this.setState({
       date: date
     });
   }
 
   //Handle change date event
-  handleChange1(start) {
+  handleChangeStart(start) {
     this.setState({
       start: start
     });
   }
 
   //Handle change date event
-  handleChange2(end) {
+  handleChangeEnd(end) {
     this.setState({
       end: end
     });
@@ -108,7 +108,7 @@ class BookingScreen extends Component {
                   <DatePicker className="datepicker-booking"
                     dateFormat="dd/MM/yyyy"
                     selected={this.state.date}
-                    onChange={this.handleChange}
+                    onChange={this.handleChangeDate}
                   />
                 </div>
               </Form.Group>
@@ -118,7 +118,7 @@ class BookingScreen extends Component {
                   <DatePicker
                     className="datepicker-booking"
                     selected={this.state.start}
-                    onChange={this.handleChange1}
+                    onChange={this.handleChangeStart}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
@@ -133,7 +133,7 @@ class BookingScreen extends Component {
                   <DatePicker
                     className="datepicker-booking"
                     selected={this.state.end}
-                    onChange={this.handleChange2}
+                    onChange={this.handleChangeEnd}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
