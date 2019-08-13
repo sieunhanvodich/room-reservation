@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col, Container, Image, Button, Badge } from 'react-bootstrap'
 import avata from '../../resources/image/room.png'
 import './DetailRoom.css'
+import { Link } from 'react-router-dom'
 
 class DetailRoom extends Component {
-
   render() {
     return (
       <Container className="container">
@@ -12,7 +12,7 @@ class DetailRoom extends Component {
           <Col xl={3} lg={3} xs={12}>
             <div>
               <Image className="image" src={avata} rounded />
-              <Button className="btn-book">Book</Button>
+              <Link to="/booking-screen"><Button className="btn-book">Book</Button></Link>
             </div>
           </Col>
           <Col xl={9} lg={9} xs={12}>
@@ -40,29 +40,29 @@ class DetailRoom extends Component {
         <Row>
           <Col xs={12}>
           </Col>
-            <div className="describe">
-              <h3 className="description">Description</h3>
-              <h1>{this.props.id}</h1>
-              <div className="detail">
-                <div>Position: Floor 8</div>
-                <div>Capacity: 80 </div>
-                <div>Detail: </div>
-                <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
-                    Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
-                    fabrics and inlaid
+          <div className="describe">
+            <h3 className="description">Description</h3>
+            <h1>{this.props.id}</h1>
+            <div className="detail">
+              <div>Position: Floor 8</div>
+              <div>Capacity: 80 </div>
+              <div>Detail: </div>
+              <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
+                  Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
+                  fabrics and inlaid
                   wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p>
 
-                <div>
-                  <Badge variant="success">Booked</Badge>
-                  <Badge variant="danger">Daily Book</Badge>
-                  <Badge variant="warning">Weekly Book</Badge>
-                  <Badge variant="info">Monthly Book</Badge>
-                  <Badge variant="secondary">Free</Badge>
+              <div>
+                <Badge variant="success">Booked</Badge>
+                <Badge variant="danger">Daily Book</Badge>
+                <Badge variant="warning">Weekly Book</Badge>
+                <Badge variant="info">Monthly Book</Badge>
+                <Badge variant="secondary">Free</Badge>
 
-                </div>
               </div>
-
             </div>
+
+          </div>
         </Row>
       </Container>
     );

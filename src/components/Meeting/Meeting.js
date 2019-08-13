@@ -16,7 +16,7 @@ class Meeting extends React.Component {
           <div className="card-text footer">{this.props.content.active ? (<div className="d-inline"><FaRunning className="float-left running"/>Running</div>) : null} <div style={{color:'white'}} className="float-right d-inline detail" onClick={this.props.onClickShowDetail}><u>Detail</u></div></div>
         </Card.Body>
       </Card>
-  )
+    )
   }
 }
 
