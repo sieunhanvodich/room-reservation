@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
 import user from '../resources/img/user.png'
 import logo from '../resources/img/reserve.png'
-import { Nav, Navbar,DropdownButton,Dropdown } from 'react-bootstrap'
+import { Nav, Navbar, DropdownButton, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './HeaderHomeScreen.css'
+import axios from 'axios'
 
 class HeaderHomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      arrInfos: []
+    }
+  }
+  componentDidMount() {
+    axios.get('http://localhost:3000/api/home')
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          user: res.data.user,
+          arrInfos: res.data.bookInfos
+        }, ()=> console.log(this.state.user))
+      })
+  }
 
   render() {
     return (
@@ -35,7 +53,7 @@ class HeaderHomeScreen extends Component {
               className="d-inline-block align-top"
               alt=""
             />
-            <DropdownButton id="dropdown-basic-button" title="DuyNhu">
+            <DropdownButton id="dropdown-basic-button" title = {this.state.user.name}>
               <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
