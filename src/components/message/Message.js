@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import './Message.css';
 
@@ -20,7 +20,7 @@ class Message extends Component {
           </Form.Row>
           <Form.Row className="d-flex justify-content-center">
             <Form.Group>
-              Bạn đã đặt phòng thành công!
+              You have successfully booked a room!
             </Form.Group>
           </Form.Row>
           <Form.Row className="d-flex justify-content-center">
