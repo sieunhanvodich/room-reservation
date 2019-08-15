@@ -17,34 +17,14 @@ export default {
 };
 
 function login(username, password) {
-    return axios.post('/login', {username,password})
-        // .then(handleResponse)
+    return axios.post('http://localhost:3000/login', {username: username,password: password})
         .then(response => {
-            localStorage.setItem('token', response.token);
-            return response.user;
+            localStorage.setItem('token', response.data.token);
+            return response.data.user;
         })
 }
 
 function logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('token');
 }
-
-// function handleResponse(response) {
-//     return response.text().then(text => {
-//         const data = text && JSON.parse(text);
-//         if (!response.ok) {
-//             if (response.status === 401) {
-//                 // auto logout if 401 response returned from api
-//                 logout();
-//                 location.reload(true);
-//             }
-
-//             const error = (data && data.message) || response.statusText;
-//             return Promise.reject(error);
-//         }
-
-//         return data;
-//     });
-// }
 

@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import {userActions} from '../../store/actions/Authentication'
 import './Login.css'
+import UserService from '../../services/UserService';
+import { saveUserInfo } from '../../store/actions'
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
-
-    // reset login status
-    // this.props.logout();
 
     this.state = {
       username: '',
@@ -28,43 +26,18 @@ class Login extends Component {
     })
   }
 
-  handleSubmit(e) {
-    console.log(this.props);
-    e.preventDefault();
+  async handleSubmit(callback) {
     this.setState({ submitted: true });
     const { username, password } = this.state
     if (username && password) {
-      this.props.login(username, password)
+      const user = await UserService.login(username, password);
+      this.props.saveUserInfo(user)
     }
   }
 
-
-
-  // onSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const form = {
-  //     username: this.state.username,
-  //     password: this.state.password
-  //   }
-
-  //   axios({
-  //     method: 'post',
-  //     url: 'http://10.1.45.111:3000/login',
-  //     data: form
-  //   })
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-
-  //     });
-  // }
-
   render() {
-    // const { loggingIn } = this.props;
     const { username, password, submitted } = this.state;
+    console.log(this.props)
     return (
       <div className="container justify-content-center align-self-center d-flex h-100">
         <div className="d-flex ">
@@ -78,7 +51,7 @@ class Login extends Component {
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-user"></i></span>
                   </div>
-                  <input type="text" className="form-control" onChange={e => this.handleChange(e)} name='username' value={username} placeholder="Username" />
+                  <input type="text" className="form-control" onChange={this.handleChange} name='username' value={username} placeholder="Username" />
                 </div>
                 {submitted && !username &&
                   <div className="input-group form-group help-block">Username is required</div>
@@ -87,7 +60,7 @@ class Login extends Component {
                   <div className="input-group-prepend">
                     <span className="input-group-text"><i className="fas fa-key"></i></span>
                   </div>
-                  <input type="password" className="form-control" onChange={e => this.handleChange(e)} name='password' value={password} placeholder="Password" />
+                  <input type="password" className="form-control" onChange={this.handleChange} name='password' value={password} placeholder="Password" />
                 </div>
                 {submitted && !password &&
                   <div className="input-group form-group help-block">Password is required</div>
@@ -96,7 +69,10 @@ class Login extends Component {
                   <input type="checkbox" />Remember Me
 					</div>
                 <div className="form-group">
-                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={this.handleSubmit}>Login</Button>
+                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={() => {
+
+                    this.handleSubmit()
+                  }}>Login</Button>
                 </div>
               </form>
             </div>
@@ -115,18 +91,25 @@ class Login extends Component {
   }
 }
 
-// function mapState(state) {
-//   // const { loggingIn } = state.authentication;
-//   // return { loggingIn };
-// }
-
-const actionCreators = {
-  login: userActions.login,
-  logout: userActions.logout,
-  abc: userActions.abc
+const mapStateToProps = (state, ownProps) => {
+  return {
+    // user: state,
+  }
 };
 
-const connectedLogin = connect(null, actionCreators)(Login);
-// export {connectedLogin as Login};
-// export default Login;
-export {connectedLogin as Login};
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     saveUserInfo: (user) => dispatch({ type: 'SAVE_USER_INFO', user: user}),
+//     handleLoginRequest: () => dispatch({ type: 'LOGIN_REQUEST'}),
+//     handleLoginSuccess: () => dispatch({ type: 'LOGIN_Success', message: 'Login Susccess!'}),
+//     handleLoginFailure: () => dispatch({ type: 'LOGIN_Failure', message: 'Login Failure!'}),
+//   }
+// }
+const mapDispatchToProps = {
+  saveUserInfo
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
+

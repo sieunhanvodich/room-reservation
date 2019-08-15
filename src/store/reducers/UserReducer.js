@@ -4,7 +4,10 @@ const userReducer = (state = stateDefault, action) => {
   console.log('action', action)
   switch (action.type) {
     case SAVE_USER:
-      return action.user
+        return{
+          ...state,
+          user: action.user
+        }
     default:
       return state // state does not change
   }
