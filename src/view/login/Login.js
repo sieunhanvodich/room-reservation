@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import './Login.css';
+import React, { Component } from 'react'
+import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import {userActions} from '../../store/actions/Authentication'
+import './Login.css'
 
 
 class Login extends Component {
@@ -28,12 +29,12 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props);
     e.preventDefault();
     this.setState({ submitted: true });
-    localStorage.setItem('token', 'abcdefghiklmn')
-    const { username, password } = this.state;
+    const { username, password } = this.state
     if (username && password) {
-      this.props.login(username, password);
+      this.props.login(username, password)
     }
   }
 
@@ -62,7 +63,7 @@ class Login extends Component {
   // }
 
   render() {
-    const { loggingIn } = this.props;
+    // const { loggingIn } = this.props;
     const { username, password, submitted } = this.state;
     return (
       <div className="container justify-content-center align-self-center d-flex h-100">
@@ -95,7 +96,7 @@ class Login extends Component {
                   <input type="checkbox" />Remember Me
 					</div>
                 <div className="form-group">
-                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={(e) => this.handleSubmit(e)}>Login</Button>
+                  <Button variant="outline-primary" className="submit login_btn float-right" onClick={this.handleSubmit}>Login</Button>
                 </div>
               </form>
             </div>
@@ -114,16 +115,18 @@ class Login extends Component {
   }
 }
 
-function mapState(state) {
-  const { loggingIn } = state.authentication;
-  return { loggingIn };
-}
+// function mapState(state) {
+//   // const { loggingIn } = state.authentication;
+//   // return { loggingIn };
+// }
 
 const actionCreators = {
-  login: authentication.login,
-  logout: authentication.logout
+  login: userActions.login,
+  logout: userActions.logout,
+  abc: userActions.abc
 };
 
-const connectedLogin = connect(mapState, actionCreators)(Login);
-export { connectedLogin as Login };
-export default Login;
+const connectedLogin = connect(null, actionCreators)(Login);
+// export {connectedLogin as Login};
+// export default Login;
+export {connectedLogin as Login};
