@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import './datePicker.css'
+import moment from 'moment'
+import DataHome from '../../services/UserService'
+
 
 export default class DatePickerr extends Component {
-  state = {
-    date: new Date(),
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    }
+  }
+  componentDidMount() {
+    let dateFormatted = moment(this.state.date).format('DD-MM-YYYY')
+    DataHome.getDataHome(dateFormatted)
   }
 
-  onChange = date => this.setState({ date }, ()=>{console.log(date)})
+  onChange = async date => this.setState({ date }, () => {
+    let dateFormatted = moment(date).format('DD-MM-YYYY')
+    DataHome.getDataHome(dateFormatted)
+  })
+
+
 
   render() {
     return (

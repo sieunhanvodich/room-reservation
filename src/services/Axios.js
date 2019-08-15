@@ -1,11 +1,13 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com'
+axios.defaults.baseURL = 'http://localhost:3000/api'
 axios.defaults.headers.common.contentType = 'application/json'
 axios.defaults.headers.common['Cache-Control'] = 'no-cache'
 axios.defaults.headers.common['Cache-control'] = 'no-store'
 axios.defaults.headers.common.Pragma = 'no-cache'
 axios.defaults.headers.common.Expires = 0
+
+
 
 axios.interceptors.request.use(
   (config) => {

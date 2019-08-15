@@ -9,6 +9,8 @@ import './contentHomeUser.css'
 import DatePicker from '../datePicker/DatePicker'
 import { Row, Container, Col } from 'react-bootstrap'
 
+import DataHome from '../../services/UserService'
+
 class ContentHomeUser extends React.Component {
   render() {
     let input;
