@@ -11,8 +11,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* {console.log(this.props.isLogin)} */}
-        {localStorage.getItem('token') && <HeaderHomeScreen />}
+        {this.props.isLogin && <HeaderHomeScreen />}
         <RouterURL />
       </Router>
     )
@@ -21,7 +20,7 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isLogin: state.isLogin
+    isLogin: state.user.isLogin
   }
 }
 

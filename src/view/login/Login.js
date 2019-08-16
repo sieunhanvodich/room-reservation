@@ -31,7 +31,8 @@ class Login extends Component {
     const { username, password } = this.state
     if (username && password) {
       const response = await UserService.login(username, password)
-      response.user ? this.props.saveUserInfo(response.user) && this.props.loginSuccess(true) && this.props.history.push('/home-user') : alert(response)
+      console.log( this.props.loginSuccess)
+      response.user ? this.props.saveUserInfo(response.user) && this.props.loginSuccess(response.token) && this.props.history.push('/home-user') : alert(response)
     }
   }
 
