@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router } from "react-router-dom"
+import { connect } from 'react-redux'
 import './App.css'
-import "react-datepicker/dist/react-datepicker.css";
-import RouterURL from './config/RouterURL';
-import { BrowserRouter as Router } from "react-router-dom";
-import HeaderHomeScreen from './components/HeaderHomeScreen';
+import "react-datepicker/dist/react-datepicker.css"
+import RouterURL from './config/RouterURL'
+import HeaderHomeScreen from './components/HeaderHomeScreen'
+import { loginSuccess } from './store/actions'
 
 class App extends Component {
   render() {
-    const isLogin = localStorage.getItem('token')
     return (
       <Router>
-        {isLogin && <HeaderHomeScreen />}
+        {/* {console.log(this.props.isLogin)} */}
+        {localStorage.getItem('token') && <HeaderHomeScreen />}
         <RouterURL />
       </Router>
     )
   }
 }
 
-export default App
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLogin: state.isLogin
+  }
+}
+
+const mapDispatchToProps = {
+  loginSuccess
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
