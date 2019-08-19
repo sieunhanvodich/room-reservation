@@ -35,6 +35,7 @@ class DetailRoom extends Component {
               <span>18:30-19:00</span>
               <span>19:00-19:30</span>
               <span>19:30-20:00</span>
+              <span>343434</span>
             </div>
           </Col>
         </Row>
