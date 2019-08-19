@@ -19,6 +19,7 @@ class BookingScreen extends Component {
     super(props);
     this.state = {
       date: new Date(Date.now()),
+      until: new Date(Date.now()),
       start: new Date(Date.now()),
       end: new Date(Date.now() + 3600000),
       modalShow: false,
@@ -213,6 +214,11 @@ class BookingScreen extends Component {
                   label="Monthly"
                   name="schedule"
                   id="monthly"
+                />
+                <DatePicker className="datepicker-booking"
+                  dateFormat="dd/MM/yyyy"
+                  selected={this.state.date}
+                  onChange={this.handleChangeDate}
                 />
               </Form.Group>
             </Form.Row>
