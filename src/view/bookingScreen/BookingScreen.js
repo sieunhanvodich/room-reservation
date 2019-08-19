@@ -4,13 +4,10 @@ import { Form, Image, Container, Col, Button, ButtonToolbar } from 'react-bootst
 import MyVerticallyCenteredModal from '../../components/modal/Modal';
 import Message from '../../components/message/Message';
 import AutoComplete from '../../components/autoComplete/AutoComplete';
+import RoomService from '../../services/RoomSerVice';
 import './BookingScreen.css';
 import DatePicker from "react-datepicker";
 import RcQueueAnim from 'rc-queue-anim';
-import logo1 from '../../resources/images/gai-xinh-1.jpg';
-import logo2 from '../../resources/images/gai-xinh-2.jpg';
-import logo3 from '../../resources/images/gai-xinh-3.jpg';
-import logo4 from '../../resources/images/gai-xinh-4.jpg';
 import logo5 from '../../resources/images/gai-xinh-5.jpg';
 import plus from '../../resources/images/icon-plus.jpg';
 
@@ -23,7 +20,8 @@ class BookingScreen extends Component {
       start: new Date(Date.now()),
       end: new Date(Date.now() + 3600000),
       modalShow: false,
-      messageShow: false
+      messageShow: false,
+      rooms: []
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -68,6 +66,11 @@ class BookingScreen extends Component {
     }
   }
 
+  //Handle change event
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   //Handle change date event
   handleChangeDate(date) {
     this.setState({
@@ -88,6 +91,27 @@ class BookingScreen extends Component {
       end: end
     });
   }
+
+
+  componentDidMount() {
+    RoomService.rooms().then(rooms =>
+      this.setState({ rooms: rooms }))
+  }
+
+  createRoomOptions = () =>
+    this.state.rooms.length
+      ? this.state.rooms.map(room => (
+        <option key={room._id} value={room.name}>
+          {room.name}
+        </option>
+      ))
+      : ""
+
+  // createUserInvitedList = () =>
+  //   this.state.userInvited.length
+  //     ? this.state.userInvited.map(user => (
+  //       <Image src={"https://i.pinimg.com/564x/" + user.avatarUrl} className="avatar" id="avatar-1" roundedCircle />
+  //     )) : ""
 
   render() {
     return (
@@ -147,10 +171,8 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
                 <Form.Label>Meeting Room</Form.Label>
-                <Form.Control as="select">
-                  <option>IOT</option>
-                  <option>AWS</option>
-                  <option>Azure</option>
+                <Form.Control as="select" name="room" onChange={this.handleChange}>
+                  {this.createRoomOptions()}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="host">
@@ -226,10 +248,10 @@ class BookingScreen extends Component {
               <Form.Group as={Col} controlId="host">
                 <Form.Label>Invited</Form.Label>
                 <div>
-                  <Image src={logo1} className="avatar" id="avatar-1" roundedCircle />
-                  <Image src={logo2} className="avatar" id="avatar-2" roundedCircle />
-                  <Image src={logo3} className="avatar" id="avatar-3" roundedCircle />
-                  <Image src={logo4} className="avatar" id="avatar-4" roundedCircle />
+                  <Image src={"https://i.pinimg.com/564x/" + "0c/cc/7c/0ccc7c84e108c072645c64540ca02ae5.jpg"} className="avatar" id="avatar-1" roundedCircle />
+                  <Image src={"https://i.pinimg.com/564x/" + "11/83/49/118349ac26aa0225c9167ba1bdb944ee.jpg"} className="avatar" id="avatar-2" roundedCircle />
+                  <Image src={"https://i.pinimg.com/564x/" + "9a/c8/46/9ac8463ba7ececdedd9bdd44b33372a4.jpg"} className="avatar" id="avatar-3" roundedCircle />
+                  <Image src={"https://i.pinimg.com/564x/" + "20/28/2b/20282b3322bdb93b76dee8caeb93395f.jpg"} className="avatar" id="avatar-4" roundedCircle />
                   <Image src={logo5} className="avatar" id="avatar-5" roundedCircle />
                   <Image src={plus} className="avatar" id="avatar-6" roundedCircle onClick={() => this.setModalShow()} />
                   <MyVerticallyCenteredModal

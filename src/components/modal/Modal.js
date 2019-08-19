@@ -5,6 +5,37 @@ import './Modal.css';
 import AutoComplete from '../../components/multiSelect/MultiSelect';
 
 class MyVerticallyCenteredModal extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      isEmpty: true
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+    this.changeEmptyStatus = this.changeEmptyStatus.bind(this)
+  }
+
+  changeEmptyStatus(){
+    this.setState={
+      isEmpty: false
+    }.then(()=> console.log(111545))
+  }
+
+  sendMail() {
+    console.log("Send mail Success!")
+  }
+
+  handleClick() {
+    try {
+      this.sendMail()
+      if(this.state.isEmpty)throw new Error("You have not chosen anyone!")
+      this.props.onHide()
+    } catch (e) {
+      alert(e.message);
+    } finally {
+      console.log('Done');
+    }
+  }
 
   render() {
     return (
@@ -20,11 +51,11 @@ class MyVerticallyCenteredModal extends Component {
         <Modal.Body>
           <Form.Row>
             <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
-              <AutoComplete></AutoComplete>
+              <AutoComplete changeStatus={this.changeEmptyStatus}></AutoComplete>
             </Form.Group>
             <Form.Group>
               <ButtonToolbar>
-                <Button variant="outline-primary">Add</Button>
+                <Button variant="outline-primary" onClick={this.handleClick}>Add</Button>
               </ButtonToolbar>
             </Form.Group>
           </Form.Row>

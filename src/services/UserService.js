@@ -1,12 +1,12 @@
 import axios from './Axios'
 
-function getUsersInfo () {
-  return axios.get('/users')
+async function users () {
+  return await axios.get('/users')
     .then(response => {
       return response.data
     })
 }
 
 export default {
-  getUsersInfo
+  users
 }

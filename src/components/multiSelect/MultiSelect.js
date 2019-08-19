@@ -3,13 +3,7 @@ import chroma from 'chroma-js';
 import Select from 'react-select';
 import { Image} from 'react-bootstrap';
 import './MultiSelect';
-
-const peopleOption = [
-  { firstName: 'Nguyễn Tùng', lastName: 'Dương', value: 'duong', label: 'duong.nguyentung@vti.com', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/mtnmissy/48.jpg' },
-  { firstName: 'Nhữ Văn', lastName: 'Duy', value: 'duy', label: 'duy.nhuvan@vti.com.vn', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/steveodom/48.jpg' },
-  { firstName: 'Lê Thành', lastName: 'Đạt', value: 'dat', label: 'dat.lethanh@vti.com.vn', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/48.jpg' },
-  { firstName: 'Bùi Quang', lastName: 'Linh', value: 'linh', label: 'linh.buiquang@vti.com.vn', color: '#0C7EAF', avatarURL: 'https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/48.jpg' },
-];
+import UserService from '../../services/UserService';
 
 // Style option multiselect 
 const peopleStyles = {
@@ -47,7 +41,7 @@ const peopleStyles = {
       backgroundColor: color.alpha(0.1).css(),
     };
   },
-  multiValueLabel: (styles, { data }) => ({
+  multiValueEmail: (styles, { data }) => ({
     ...styles,
     color: data.color,
   }),
@@ -61,14 +55,6 @@ const peopleStyles = {
   }),
 };
 
-// Get url image from data
-const getURL = (value) => {
-  for (let i = 0; i < peopleOption.length; i++) {
-    if (peopleOption[i].value === value)
-      return peopleOption[i].avatarURL;
-  }
-}
-
 const CustomOption = (params) => {
   if (!params.isDisabled) {
     return (
@@ -77,13 +63,13 @@ const CustomOption = (params) => {
           <Image
             width={45}
             height={45}
-            src={getURL(params.data.value)}
+            src={"https://i.pinimg.com/564x/" + params.data.avatarUrl}
             alt="Generic placeholder"
             roundedCircle
           />
         </div>
         <div className="float-left ml-4">
-          <span className="">{params.data.label}</span>
+          <span className="">{params.data.email}</span>
         </div>
         <div className="clearfix"></div>
       </div>
@@ -94,14 +80,36 @@ const CustomOption = (params) => {
 }
 
 class MultiSelect extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      users: []
+    }
+  }
+
+  componentDidMount(){
+    UserService.users().then(users => {
+      users.map(user => {
+        user.label = user.email
+        user.value = user.name
+        user.color = '#0C7EAF'
+      })
+
+      this.setState({
+        users: users
+      })
+    })
+  }
+
   render() {
     return (
       <Select
         components={{ Option: CustomOption }}
         closeMenuOnSelect={false}
         isMulti
-        options={peopleOption}
+        options={this.state.users}
         styles={peopleStyles}
+        checkEmpty = {this.props.changeStatus}
       />
     )
   }
