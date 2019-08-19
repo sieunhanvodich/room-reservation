@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Container, Image, Button, Badge } from 'react-bootstrap'
-import avata from '../../resources/image/room.png'
+
 import './DetailRoom.css'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ class DetailRoom extends Component {
         <Row>
           <Col xl={3} lg={3} xs={12}>
             <div>
-              <Image className="image" src={avata} rounded />
+              <Image className="image" src={this.props.data.image} rounded />
               <Link to="/booking-screen"><Button className="btn-book">Book</Button></Link>
             </div>
           </Col>
@@ -35,7 +35,7 @@ class DetailRoom extends Component {
               <span>18:30-19:00</span>
               <span>19:00-19:30</span>
               <span>19:30-20:00</span>
-              <span>343434</span>
+              
             </div>
           </Col>
         </Row>
@@ -44,22 +44,19 @@ class DetailRoom extends Component {
           </Col>
           <div className="describe">
             <h3 className="description">Description</h3>
-            <h1>{this.props.id}</h1>
+            <h1>{this.props.data.name}</h1>
             <div className="detail">
-              <div>Position: Floor 8</div>
-              <div>Capacity: 80 </div>
+              <div>Position: {this.props.data.position}</div>
+              <div>Capacity: {this.props.data.capacity} </div>
               <div>Detail: </div>
-              <p>The rooms in Ca' Pisani hotel have been realised completely using original pieces of design and are taken care of down to the last detail.
-                  Refined style, play of colours and precious materials make the hotel a real jewel of contemporary design. The presence of marbles, precious
-                  fabrics and inlaid
-                  wood furniture has been designed to guarantee guests maximum comfort and relaxation.</p>
+              <p>{this.props.data.description}</p>
 
               <div>
                 <Badge variant="success">Booked</Badge>
                 <Badge variant="danger">Daily Book</Badge>
                 <Badge variant="warning">Weekly Book</Badge>
                 <Badge variant="info">Monthly Book</Badge>
-                <Badge variant="secondary">Free</Badge>
+               
 
               </div>
             </div>

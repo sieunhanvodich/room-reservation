@@ -1,35 +1,47 @@
 import React, { Component, useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import DetailRoom from './DetailRoom';
+import axios from 'axios';
+
 class Contents extends Component {
-  render() {
-    function ControlledTabs() {
-      const [key, setKey] = useState('home');
-      return (
-        <Tabs id="controlled-tab-example" activeKey={key} onSelect={k => setKey(k)}>
-          <Tab eventKey="home" title="IOT">
-            <DetailRoom id="iot" />
-          </Tab>
-          <Tab eventKey="1" title="IOS">
-            <DetailRoom  id="ios"/>
-          </Tab>
-          <Tab eventKey="2" title="AWS">
-            <DetailRoom id="aws"/>
-          </Tab>
-          <Tab eventKey="3" title="WINDOWS">
-            <DetailRoom id="windows"/>
-          </Tab>
-          <Tab eventKey="4" title="ANDROID">
-            <DetailRoom id="android"/>
-          </Tab>
-        </Tabs>
-      );
+  constructor(props) {
+    super(props);
+    this.state = {
+      info: [],
+      key: 'IOT'
     }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/roomlist')
+      .then(res => {
+        const info = res.data.roomList;
+        this.setState({ info });
+        console.log(this.state.info)
+      })
+  }
+
+  onSelectTab = (key) => {
+    this.setState({
+      key
+    })
+  }
+
+
+  render() {
     return (
-      <ControlledTabs />
+      <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={key => this.onSelectTab(key)}>
+        {this.state.info.map((value, index) => {
+          return (
+            <Tab eventKey={value.name} title={value.name}>
+              <DetailRoom id="name" data={value} />
+
+            </Tab>
+          )
+        })}
+      </Tabs>
     );
   }
 }
 
 export default Contents;
-
