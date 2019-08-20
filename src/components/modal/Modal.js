@@ -7,7 +7,7 @@ import AutoComplete from '../../components/multiSelect/MultiSelect';
 class MyVerticallyCenteredModal extends Component {
   constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       isEmpty: true
     }
 
@@ -15,10 +15,11 @@ class MyVerticallyCenteredModal extends Component {
     this.changeEmptyStatus = this.changeEmptyStatus.bind(this)
   }
 
-  changeEmptyStatus(){
-    this.setState={
-      isEmpty: false
-    }.then(()=> console.log(111545))
+  changeEmptyStatus(valueLength) {
+    this.setState({
+      isEmpty: (valueLength) ? false : true
+    })
+    console.log(this.state.isEmpty + " " + valueLength)
   }
 
   sendMail() {
@@ -28,7 +29,7 @@ class MyVerticallyCenteredModal extends Component {
   handleClick() {
     try {
       this.sendMail()
-      if(this.state.isEmpty)throw new Error("You have not chosen anyone!")
+      if (this.state.isEmpty) throw new Error("You have not chosen anyone!")
       this.props.onHide()
     } catch (e) {
       alert(e.message);

@@ -11,6 +11,27 @@ import RcQueueAnim from 'rc-queue-anim';
 import logo5 from '../../resources/images/gai-xinh-5.jpg';
 import plus from '../../resources/images/icon-plus.jpg';
 
+const departmentFromServer = [
+  {
+    "_id": "5d490435df293ac6ec0b9970",
+    "name" : "D1",
+    "updated_at" : "...",
+    "created_at" : "8/6/2019"
+  },
+  {
+    _id: "5d5b9f291882c7b21765f62e",
+    "name" : "D2",
+    "updated_at" : "...",
+    "created_at" : "8/6/2019"
+  },
+  {
+    "_id" : "5d5b9f2f1882c7b21765f633",
+    "name" : "D3",
+    "updated_at" : "...",
+    "created_at" : "8/6/2019"
+  },
+]
+
 class BookingScreen extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +42,18 @@ class BookingScreen extends Component {
       end: new Date(Date.now() + 3600000),
       modalShow: false,
       messageShow: false,
-      rooms: []
+      rooms: [],
+      departments: departmentFromServer,
+      roomSelected: '',
+      departmentSelected: '',
+      meetingName: '',
+      from: '',
+      to: '',
+      until: '',
+      host: '',
+      project: '',
+      descripton: '',
+      bookType: ''
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -66,9 +98,19 @@ class BookingScreen extends Component {
     }
   }
 
+  //Handle onClick radio event
+  onClick = nr => async () => {
+    await this.setState({
+      bookType: nr
+    });
+  }
+
   //Handle change event
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = async (e) => {
+    await this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(this.state.departmentSelected + " " + this.state.roomSelected)
   }
 
   //Handle change date event
@@ -107,11 +149,16 @@ class BookingScreen extends Component {
       ))
       : ""
 
-  // createUserInvitedList = () =>
-  //   this.state.userInvited.length
-  //     ? this.state.userInvited.map(user => (
-  //       <Image src={"https://i.pinimg.com/564x/" + user.avatarUrl} className="avatar" id="avatar-1" roundedCircle />
-  //     )) : ""
+  createDepartmentOptions = () =>
+    this.state.departments.length
+      ? this.state.departments.map(department => (
+        <option key={department._id} value={department.name}>
+          {department.name}
+        </option>
+      ))
+      : ""
+
+
 
   render() {
     return (
@@ -123,7 +170,9 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group key="2" as={Col} controlId="meetingName">
                 <Form.Label>Meeting Name</Form.Label>
-                <Form.Control type="text" placeholder="Meeting Name" />
+                <Form.Control type="text" placeholder="Meeting Name" name='meetingName'
+                  value={this.state.meetingName}
+                  onChange={e => this.handleChange(e)} />
               </Form.Group>
             </Form.Row>
             <Form.Row>
@@ -171,35 +220,47 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
                 <Form.Label>Meeting Room</Form.Label>
-                <Form.Control as="select" name="room" onChange={this.handleChange}>
+                <Form.Control as="select" name="roomSelected"
+                  ref={ref => {
+                    this._select = ref
+                  }} onChange={this.handleChange} value={this.state.roomSelected}>
                   {this.createRoomOptions()}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="host">
                 <Form.Label>Host</Form.Label>
-                <AutoComplete placeholder="Host" data></AutoComplete>
+                <Form.Control type="text" placeholder="Host" name='host'
+                  value={this.state.host}
+                  onChange={e => this.handleChange(e)} />
+                {/* <AutoComplete placeholder="Host" data></AutoComplete> */}
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="department">
                 <Form.Label>Department</Form.Label>
-                <Form.Control as="select">
-                  <option>D1</option>
-                  <option>D2</option>
-                  <option>D3</option>
-                  <option>D4</option>
-                  <option>D5</option>
+                <Form.Control as="select" name="departmentSelected"
+                  ref={ref => {
+                    this._select = ref
+                  }} onChange={this.handleChange} value={this.state.departmentSelected}>
+                  {this.createDepartmentOptions()}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="project">
                 <Form.Label>Project</Form.Label>
-                <AutoComplete placeholder="Project" data></AutoComplete>
+                <Form.Control type="text" placeholder="Project" name='project'
+                  value={this.state.project}
+                  onChange={e => this.handleChange(e)} />
+                {/* <AutoComplete placeholder="Project" data></AutoComplete> */}
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descripton</Form.Label>
-                <Form.Control as="textarea" rows="3" placeholder="Description" />
+                <Form.Control as="textarea" rows="3" placeholder="Description"
+                  name="descripton"
+                  value={this.state.descripton}
+                  onChange={e => this.handleChange(e)}
+                />
               </Form.Group>
             </Form.Row>
             <Form.Row >
@@ -210,32 +271,36 @@ class BookingScreen extends Component {
                   inline
                   type="radio"
                   label="One Day"
-                  name="schedule"
+                  name="bookType"
                   id="oneDay"
+                  onChange={this.onClick(1)}
                 />
                 <Form.Check
                   inline
                   custom
                   type="radio"
                   label="Daily"
-                  name="schedule"
+                  name="bookType"
                   id="daily"
+                  onChange={this.onClick(2)}
                 />
                 <Form.Check
                   inline
                   custom
                   type="radio"
                   label="Weekly"
-                  name="schedule"
+                  name="bookType"
                   id="weekly"
+                  onChange={this.onClick(3)}
                 />
                 <Form.Check
                   inline
                   custom
                   type="radio"
                   label="Monthly"
-                  name="schedule"
+                  name="bookType"
                   id="monthly"
+                  onChange={this.onClick(4)}
                 />
                 <DatePicker className="datepicker-booking"
                   dateFormat="dd/MM/yyyy"

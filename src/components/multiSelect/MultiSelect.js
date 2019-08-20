@@ -1,7 +1,7 @@
 import React from 'react';
 import chroma from 'chroma-js';
 import Select from 'react-select';
-import { Image} from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import './MultiSelect';
 import UserService from '../../services/UserService';
 
@@ -56,6 +56,7 @@ const peopleStyles = {
 };
 
 const CustomOption = (params) => {
+  // console.log(params)
   if (!params.isDisabled) {
     return (
       <div {...params.innerProps} className="d-flex align-items-center">
@@ -80,14 +81,17 @@ const CustomOption = (params) => {
 }
 
 class MultiSelect extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state={
-      users: []
+    this.state = {
+      users: [],
+      value: []
     }
+
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     UserService.users().then(users => {
       users.map(user => {
         user.label = user.email
@@ -101,15 +105,28 @@ class MultiSelect extends React.Component {
     })
   }
 
+  async handleChange(e) {
+    await this.setState({
+      value: (e!=null) ? e : []
+    })
+    // if(e!=null) await this.setState({
+    //   value: e
+    // })
+    // else await this.setState({
+    //   value: []
+    // })
+    this.props.changeStatus(this.state.value.length)
+  }
+
   render() {
     return (
       <Select
         components={{ Option: CustomOption }}
         closeMenuOnSelect={false}
         isMulti
+        onChange={this.handleChange}
         options={this.state.users}
         styles={peopleStyles}
-        checkEmpty = {this.props.changeStatus}
       />
     )
   }
