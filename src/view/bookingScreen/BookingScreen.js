@@ -5,6 +5,7 @@ import MyVerticallyCenteredModal from '../../components/modal/Modal';
 import Message from '../../components/message/Message';
 import AutoComplete from '../../components/autoComplete/AutoComplete';
 import RoomService from '../../services/RoomSerVice';
+import BookingService from '../../services/BookingService';
 import './BookingScreen.css';
 import DatePicker from "react-datepicker";
 import RcQueueAnim from 'rc-queue-anim';
@@ -49,13 +50,25 @@ class BookingScreen extends Component {
       meetingName: '',
       from: '',
       to: '',
-      until: '',
       host: '',
       project: '',
       descripton: '',
-      bookType: ''
+      bookType: '',
+      bookInfo:{
+        meeting_name: '',
+        project_name: '',
+        room_id: '',
+        from: '',
+        to: '',
+        host_id: '',
+        book_type_id: '',
+        description: '',
+        invited: '',
+        until: '',
+      }
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
+    this.handleChangeUntil = this.handleChangeUntil.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.roundingTime(this.state.start)
@@ -84,18 +97,19 @@ class BookingScreen extends Component {
 
   //Set modal show
   setModalShow() {
-    this.setState({
-      modalShow: !this.state.modalShow
-    })
+      this.setState({
+        modalShow: !this.state.modalShow
+      })
   }
 
   //Handle show message when click book button 
   setMessageShow() {
-    if (true) {
+    try{
+      BookingService.booking(this.state.bookInfo)
       this.setState({
         messageShow: !this.state.messageShow
       })
-    }
+    }catch{}
   }
 
   //Handle onClick radio event
@@ -114,9 +128,16 @@ class BookingScreen extends Component {
   }
 
   //Handle change date event
-  handleChangeDate(date) {
-    this.setState({
+  async handleChangeDate(date) {
+    await this.setState({
       date: date
+    });
+  }
+
+  //Handle change until event
+  async handleChangeUntil(until) {
+    await this.setState({
+      until: until
     });
   }
 
@@ -304,8 +325,8 @@ class BookingScreen extends Component {
                 />
                 <DatePicker className="datepicker-booking"
                   dateFormat="dd/MM/yyyy"
-                  selected={this.state.date}
-                  onChange={this.handleChangeDate}
+                  selected={this.state.until}
+                  onChange={this.handleChangeUntil}
                 />
               </Form.Group>
             </Form.Row>
