@@ -54,18 +54,18 @@ class BookingScreen extends Component {
       project: '',
       descripton: '',
       bookType: '',
-      bookInfo:{
-        meeting_name: '',
-        project_name: '',
-        room_id: '',
-        from: '',
-        to: '',
-        host_id: '',
-        book_type_id: '',
-        description: '',
-        invited: '',
-        until: '',
-      }
+      // bookInfo:{
+      //   meeting_name: '',
+      //   project_name: '',
+      //   room_id: '',
+      //   from: '',
+      //   to: '',
+      //   host_id: '',
+      //   book_type_id: '',
+      //   description: '',
+      //   invited: '',
+      //   until: '',
+      // }
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeUntil = this.handleChangeUntil.bind(this);
@@ -105,6 +105,21 @@ class BookingScreen extends Component {
   //Handle show message when click book button 
   setMessageShow() {
     try{
+      const bookInfo = {
+        meeting_name: this.state.meetingName,
+        project_name: this.state.projectName,
+        roomSelected: this.state.roomSelected,
+        from: '',
+        to: '',
+        host_id: '',
+        bookType: this.state.bookType,
+        description: this.state.descripton,
+        invited: [],
+        until: this.state.until,
+      }
+      this.setState({
+        bookInfo:{bookInfo}
+      })
       BookingService.booking(this.state.bookInfo)
       this.setState({
         messageShow: !this.state.messageShow
@@ -130,7 +145,7 @@ class BookingScreen extends Component {
   //Handle change date event
   async handleChangeDate(date) {
     await this.setState({
-      date: date
+      date: date,
     });
   }
 
