@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Form, Image, Container, Col, Button, ButtonToolbar } from 'react-bootstrap';
 // import {ValidatedInput} from 'react-bootstrap-validation';
 import MyVerticallyCenteredModal from '../../components/modal/Modal';
@@ -9,27 +10,26 @@ import BookingService from '../../services/BookingService';
 import './BookingScreen.css';
 import DatePicker from "react-datepicker";
 import RcQueueAnim from 'rc-queue-anim';
-import logo5 from '../../resources/images/gai-xinh-5.jpg';
 import plus from '../../resources/images/icon-plus.jpg';
 
 const departmentFromServer = [
   {
     "_id": "5d490435df293ac6ec0b9970",
-    "name" : "D1",
-    "updated_at" : "...",
-    "created_at" : "8/6/2019"
+    "name": "D1",
+    "updated_at": "...",
+    "created_at": "8/6/2019"
   },
   {
     _id: "5d5b9f291882c7b21765f62e",
-    "name" : "D2",
-    "updated_at" : "...",
-    "created_at" : "8/6/2019"
+    "name": "D2",
+    "updated_at": "...",
+    "created_at": "8/6/2019"
   },
   {
-    "_id" : "5d5b9f2f1882c7b21765f633",
-    "name" : "D3",
-    "updated_at" : "...",
-    "created_at" : "8/6/2019"
+    "_id": "5d5b9f2f1882c7b21765f633",
+    "name": "D3",
+    "updated_at": "...",
+    "created_at": "8/6/2019"
   },
 ]
 
@@ -39,7 +39,7 @@ class BookingScreen extends Component {
     this.state = {
       date: new Date(Date.now()),
       until: new Date(Date.now()),
-      start: new Date(Date.now()),
+      // start: new Date(Date.now()),
       end: new Date(Date.now() + 3600000),
       modalShow: false,
       messageShow: false,
@@ -48,37 +48,23 @@ class BookingScreen extends Component {
       roomSelected: '',
       departmentSelected: '',
       meetingName: '',
-      from: '',
-      to: '',
       host: '',
       project: '',
       descripton: '',
       bookType: '',
-      // bookInfo:{
-      //   meeting_name: '',
-      //   project_name: '',
-      //   room_id: '',
-      //   from: '',
-      //   to: '',
-      //   host_id: '',
-      //   book_type_id: '',
-      //   description: '',
-      //   invited: '',
-      //   until: '',
-      // }
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeUntil = this.handleChangeUntil.bind(this);
-    this.handleChangeStart = this.handleChangeStart.bind(this);
+    // this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
-    this.roundingTime(this.state.start)
+    this.roundingTime(this.state.date)
     this.roundingTime(this.state.end)
   }
 
   //Set rounding hours for start, end time
-  setRoundingStartEnd(start, end) {
+  setRoundingStartEnd(date, end) {
     this.setState({
-      start: start,
+      date: date,
       end: end
     })
   }
@@ -97,34 +83,39 @@ class BookingScreen extends Component {
 
   //Set modal show
   setModalShow() {
-      this.setState({
-        modalShow: !this.state.modalShow
-      })
+    this.setState({
+      modalShow: !this.state.modalShow
+    })
   }
 
   //Handle show message when click book button 
   setMessageShow() {
-    try{
+    this.setState({
+      messageShow: !this.state.messageShow
+    })
+  }
+
+  sendBookInfotoServer() {
+    try {
       const bookInfo = {
         meeting_name: this.state.meetingName,
-        project_name: this.state.projectName,
-        roomSelected: this.state.roomSelected,
-        from: '',
-        to: '',
-        host_id: '',
-        bookType: this.state.bookType,
+        project_name: this.state.project,
+        // roomSelected: this.state.roomSelected,
+        room_id:"5d4904addf293ac6ec0b99b8",
+        from: this.state.date,
+        to: this.state.end,
+        // host: this.state.host,
+        host_id: "5d49031cdf293ac6ec0b98db",
+        // bookType: this.state.bookType,
+        book_type_id: '5d5cf4a71882c7b217661ea0',
         description: this.state.descripton,
-        invited: [],
+        invited: this.props.invitedUsers.map(invitedUser => invitedUser._id),
         until: this.state.until,
       }
-      this.setState({
-        bookInfo:{bookInfo}
-      })
-      BookingService.booking(this.state.bookInfo)
-      this.setState({
-        messageShow: !this.state.messageShow
-      })
-    }catch{}
+      console.log(bookInfo)
+      BookingService.booking(bookInfo)
+      this.setMessageShow()
+    } catch{ }
   }
 
   //Handle onClick radio event
@@ -139,7 +130,7 @@ class BookingScreen extends Component {
     await this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state.departmentSelected + " " + this.state.roomSelected)
+    // console.log(this.state.departmentSelected + " " + this.state.roomSelected)
   }
 
   //Handle change date event
@@ -157,11 +148,11 @@ class BookingScreen extends Component {
   }
 
   //Handle change date event
-  handleChangeStart(start) {
-    this.setState({
-      start: start
-    });
-  }
+  // handleChangeStart(start) {
+  //   this.setState({
+  //     start: start
+  //   });
+  // }
 
   //Handle change date event
   handleChangeEnd(end) {
@@ -193,6 +184,14 @@ class BookingScreen extends Component {
         </option>
       ))
       : ""
+
+  createAvatarList = () => {
+    return (this.props.invitedUsers ? this.props.invitedUsers.map((invitedUser, index) =>
+      <Image key={invitedUser._id} src={"https://i.pinimg.com/564x/" + invitedUser.avatarUrl} className="avatar" id={`avatar-${index + 1}`} roundedCircle />
+    )
+      : "") || <Image src={plus} className="avatar" id="avatar-1" roundedCircle onClick={() => this.setModalShow()} />
+  }
+
 
 
 
@@ -227,8 +226,8 @@ class BookingScreen extends Component {
                 <div className="datepicker-wrapper">
                   <DatePicker
                     className="datepicker-booking"
-                    selected={this.state.start}
-                    onChange={this.handleChangeStart}
+                    selected={this.state.date}
+                    onChange={this.handleChangeDate}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
@@ -349,12 +348,8 @@ class BookingScreen extends Component {
               <Form.Group as={Col} controlId="host">
                 <Form.Label>Invited</Form.Label>
                 <div>
-                  <Image src={"https://i.pinimg.com/564x/" + "0c/cc/7c/0ccc7c84e108c072645c64540ca02ae5.jpg"} className="avatar" id="avatar-1" roundedCircle />
-                  <Image src={"https://i.pinimg.com/564x/" + "11/83/49/118349ac26aa0225c9167ba1bdb944ee.jpg"} className="avatar" id="avatar-2" roundedCircle />
-                  <Image src={"https://i.pinimg.com/564x/" + "9a/c8/46/9ac8463ba7ececdedd9bdd44b33372a4.jpg"} className="avatar" id="avatar-3" roundedCircle />
-                  <Image src={"https://i.pinimg.com/564x/" + "20/28/2b/20282b3322bdb93b76dee8caeb93395f.jpg"} className="avatar" id="avatar-4" roundedCircle />
-                  <Image src={logo5} className="avatar" id="avatar-5" roundedCircle />
-                  <Image src={plus} className="avatar" id="avatar-6" roundedCircle onClick={() => this.setModalShow()} />
+                  {this.createAvatarList()}
+                  {/* <Image src={plus} className="avatar" id={`avatar-${this.state.avatarPlusId}`} roundedCircle onClick={() => this.setModalShow()} /> */}
                   <MyVerticallyCenteredModal
                     show={this.state.modalShow}
                     onHide={() => this.setModalShow()}
@@ -366,7 +361,7 @@ class BookingScreen extends Component {
               <Form.Group as={Col} className="d-flex justify-content-end align-items-center">
                 <ButtonToolbar>
                   <Button variant="outline-secondary" className="cancel">Cancel</Button>
-                  <Button variant="outline-primary" onClick={() => this.setMessageShow()} className="submit" >Book</Button>
+                  <Button variant="outline-primary" onClick={() => this.sendBookInfotoServer()} className="submit" >Book</Button>
                   <Message
                     show={this.state.messageShow}
                     onHide={() => this.setMessageShow()}
@@ -381,4 +376,15 @@ class BookingScreen extends Component {
   }
 }
 
-export default BookingScreen;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    invitedUsers: state.user.invitedUsers
+  }
+};
+
+const mapDispatchToProps = {
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookingScreen);

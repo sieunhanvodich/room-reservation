@@ -22,14 +22,19 @@ class MyVerticallyCenteredModal extends Component {
     console.log(this.state.isEmpty + " " + valueLength)
   }
 
-  sendMail() {
-    console.log("Send mail Success!")
+  addGuest() {
+    console.log("Add mail Success!")
   }
 
   handleClick() {
     try {
-      this.sendMail()
+      this.addGuest()
       if (this.state.isEmpty) throw new Error("You have not chosen anyone!")
+      else{
+        this.setState({
+          isEmpty: true
+        })
+      }
       this.props.onHide()
     } catch (e) {
       alert(e.message);

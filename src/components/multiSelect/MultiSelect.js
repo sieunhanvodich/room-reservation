@@ -4,6 +4,8 @@ import Select from 'react-select';
 import { Image } from 'react-bootstrap';
 import './MultiSelect';
 import UserService from '../../services/UserService';
+import { connect } from 'react-redux';
+import {saveInvitedUser} from '../../store/actions';
 
 // Style option multiselect 
 const peopleStyles = {
@@ -102,6 +104,7 @@ class MultiSelect extends React.Component {
       this.setState({
         users: users
       })
+
     })
   }
 
@@ -109,12 +112,7 @@ class MultiSelect extends React.Component {
     await this.setState({
       value: (e!=null) ? e : []
     })
-    // if(e!=null) await this.setState({
-    //   value: e
-    // })
-    // else await this.setState({
-    //   value: []
-    // })
+    this.props.saveInvitedUser(this.state.value)
     this.props.changeStatus(this.state.value.length)
   }
 
@@ -131,6 +129,17 @@ class MultiSelect extends React.Component {
     )
   }
 }
-export default MultiSelect;
+
+const mapStateToProps = (state, ownProps) => {
+  return {}
+};
+
+const mapDispatchToProps = {
+  saveInvitedUser
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MultiSelect);
 
 

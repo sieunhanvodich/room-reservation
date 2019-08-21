@@ -1,4 +1,5 @@
 export const SAVE_USER = 'SAVE_USER';
+export const SAVE_INVITED_USERS = 'SAVE_INVITED_USERS';
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const GET_DETAIL_MEETING = 'GET_DETAIL_MEETING';
