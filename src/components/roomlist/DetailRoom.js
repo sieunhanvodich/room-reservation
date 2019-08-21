@@ -32,6 +32,7 @@ class DetailRoom extends Component {
             <h3 className="description">Description</h3>
             <h1>{this.props.data.name}</h1>
             <div className="detail-room">
+              {/* {console.log(this.props.data.room_id.position)} */}
               <div>Position: {this.props.data.position}</div>
               <div>Capacity: {this.props.data.capacity} </div>
               <div>Detail: </div>

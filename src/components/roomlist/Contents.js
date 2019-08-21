@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import DetailRoom from './DetailRoom';
 import axios from 'axios';
-
+import moment from 'moment';
 
 class Contents extends Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class Contents extends Component {
     this.state = {
       info: [],
       key: 'IOT',
-      bookTypeName: [],
       timearr: [
         {
           start: '9:30',
@@ -52,6 +51,16 @@ class Contents extends Component {
           end: '13:30',
           type: ''
         },
+        {
+          start: '13:30',
+          end: '14:00',
+          type: ''
+        },
+        {
+          start: '14:00',
+          end: '14:30',
+          type: ''
+        },
       ]
     }
     
@@ -60,12 +69,12 @@ class Contents extends Component {
   componentDidMount() {
     axios.get('http://localhost:3000/roomlist')
       .then(res => {
-        const info = res.data.roomList;
-        const bookTypeName = res.data.bookTypeName;
+        const info = res.data.bookInfos;
+      
         this.setState({ info });
         console.log(info)
-        this.setState({bookTypeName});
         
+      
         // const a = this.state.timearr
         // a[0].type = 'red'
         // this.setState({ timearr: a})
@@ -81,12 +90,13 @@ class Contents extends Component {
   
   render() {
     return (
-      <Tabs id="controlled-tab-example"  activeKey={this.state.key} onSelect={key => this.onSelectTab(key)}>
-        {this.state.info.map((value, index) => {
+      <Tabs id="controlled-tab-example"  activeKey={this.state.key} onSelect={key => this.onSelectTab(key)}> 
+        {this.state.info.map((value, index) => { 
           return (
-            <Tab eventKey={value.name} title={value.name}>
-              <DetailRoom id="name" data={value} timearr={this.state.timearr} />
-
+            <Tab eventKey={value.room_id.name} title={value.room_id.name}>
+              
+              <DetailRoom id="name" data={value.room_id} timearr={this.state.timearr} />
+              
             </Tab>
           )
         })}
