@@ -1,9 +1,15 @@
-import { SAVE_USER } from '../actions/ActionTypes'
-import { SAVE_INVITED_USERS } from '../actions/ActionTypes'
+import { SAVE_USER, LOGIN_SUCCESS, SAVE_INVITED_USERS } from '../actions/ActionTypes'
 
-let stateDefault = [1, 2]
-const userReducer = (state = stateDefault, action) => {
+const token = localStorage.getItem('token')
+const initialState = token ? { isLogin: true } : { isLogin: false }
+
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLogin: action.isLogin
+      }
     case SAVE_USER:
       return {
         ...state,
@@ -14,8 +20,8 @@ const userReducer = (state = stateDefault, action) => {
         ...state,
         invitedUsers: action.invitedUsers
       }
-    default:
-      return state // state does not change
+    default: 
+      return state;
   }
 }
 

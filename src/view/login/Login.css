@@ -83,3 +83,9 @@ input:focus {
 .input-group-prepend > span {
   display: inline-block !important;
 }
+.btn-outline-primary.focus, .btn-outline-primary:focus {
+  box-shadow: 0 0 0 0
+}
+.help-block{
+  color:red;
+}

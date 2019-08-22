@@ -4,16 +4,17 @@ import { Route } from "react-router-dom";
 import HomeScreen from '../view/homescreen/HomeScreen';
 import Login from '../view/login/Login';
 import { Container } from 'react-bootstrap';
+import {PrivateRoute} from '../common/PrivateRoute';
 import BookingScreen from '../view/bookingScreen/BookingScreen';
 
 class RouterURL extends Component {
   render() {
     return (
       <Container>
-        <Route path="/room-list" component={RoomList} />
-        <Route exact path="/home-user" component={HomeScreen} />
+        <PrivateRoute path="/room-list" component={RoomList} />
+        <PrivateRoute exact path="/home-user" component={HomeScreen} />
         <Route path="/login" component={Login} />
-        <Route exact path="/booking-screen" component={BookingScreen} />
+        <PrivateRoute path="/booking-screen" component={BookingScreen} />
       </Container>
     );
   }

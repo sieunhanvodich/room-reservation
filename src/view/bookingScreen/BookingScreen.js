@@ -43,15 +43,15 @@ class BookingScreen extends Component {
       end: new Date(Date.now() + 3600000),
       modalShow: false,
       messageShow: false,
-      rooms: [],
+      rooms: '',
       departments: departmentFromServer,
-      roomSelected: '',
-      departmentSelected: '',
+      room_selected: 'AWS',
+      department_selected: 'D1',
       meetingName: '',
       host: '',
       project: '',
       descripton: '',
-      bookType: '',
+      bookType: 'one',
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeUntil = this.handleChangeUntil.bind(this);
@@ -97,25 +97,29 @@ class BookingScreen extends Component {
 
   sendBookInfotoServer() {
     try {
-      const bookInfo = {
-        meeting_name: this.state.meetingName,
-        project_name: this.state.project,
-        // roomSelected: this.state.roomSelected,
-        room_id:"5d4904addf293ac6ec0b99b8",
-        from: this.state.date,
-        to: this.state.end,
-        // host: this.state.host,
-        host_id: "5d49031cdf293ac6ec0b98db",
-        // bookType: this.state.bookType,
-        book_type_id: '5d5cf4a71882c7b217661ea0',
-        description: this.state.descripton,
-        invited: this.props.invitedUsers.map(invitedUser => invitedUser._id),
-        until: this.state.until,
+      if(this.props.invitedUsers){
+        const bookInfo = {
+          meeting_name: this.state.meetingName,
+          project_name: this.state.project,
+          room_selected: this.state.room_selected,
+          department_selected: this.state.department_selected,
+          from: this.state.date,
+          to: this.state.end,
+          host_id: this.props.userInfo._id,
+          bookType: this.state.bookType,
+          description: this.state.descripton,
+          invited: this.props.invitedUsers.map(invitedUser => invitedUser._id),
+          until: this.state.until,
+        }
+        console.log(bookInfo)
+        // BookingService.booking(bookInfo)
+        this.setMessageShow()
+      }else{
+        alert("You have not chosen anyone!")
       }
-      console.log(bookInfo)
-      BookingService.booking(bookInfo)
-      this.setMessageShow()
-    } catch{ }
+    } catch(err){ 
+      alert(err)
+    }
   }
 
   //Handle onClick radio event
@@ -130,7 +134,6 @@ class BookingScreen extends Component {
     await this.setState({
       [e.target.name]: e.target.value
     })
-    // console.log(this.state.departmentSelected + " " + this.state.roomSelected)
   }
 
   //Handle change date event
@@ -255,17 +258,18 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
                 <Form.Label>Meeting Room</Form.Label>
-                <Form.Control as="select" name="roomSelected"
+                <Form.Control as="select" name="room_selected"
                   ref={ref => {
                     this._select = ref
-                  }} onChange={this.handleChange} value={this.state.roomSelected}>
+                  }} onChange={this.handleChange} value={this.state.room_selected}>
                   {this.createRoomOptions()}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="host">
                 <Form.Label>Host</Form.Label>
                 <Form.Control type="text" placeholder="Host" name='host'
-                  value={this.state.host}
+                  readOnly
+                  value={this.props.userInfo.name}
                   onChange={e => this.handleChange(e)} />
                 {/* <AutoComplete placeholder="Host" data></AutoComplete> */}
               </Form.Group>
@@ -273,10 +277,10 @@ class BookingScreen extends Component {
             <Form.Row>
               <Form.Group as={Col} controlId="department">
                 <Form.Label>Department</Form.Label>
-                <Form.Control as="select" name="departmentSelected"
+                <Form.Control as="select" name="department_selected"
                   ref={ref => {
                     this._select = ref
-                  }} onChange={this.handleChange} value={this.state.departmentSelected}>
+                  }} onChange={this.handleChange} value={this.state.department_selected}>
                   {this.createDepartmentOptions()}
                 </Form.Control>
               </Form.Group>
@@ -308,7 +312,7 @@ class BookingScreen extends Component {
                   label="One Day"
                   name="bookType"
                   id="oneDay"
-                  onChange={this.onClick(1)}
+                  onChange={this.onClick("one")}
                 />
                 <Form.Check
                   inline
@@ -317,7 +321,7 @@ class BookingScreen extends Component {
                   label="Daily"
                   name="bookType"
                   id="daily"
-                  onChange={this.onClick(2)}
+                  onChange={this.onClick("daily")}
                 />
                 <Form.Check
                   inline
@@ -326,7 +330,7 @@ class BookingScreen extends Component {
                   label="Weekly"
                   name="bookType"
                   id="weekly"
-                  onChange={this.onClick(3)}
+                  onChange={this.onClick("weekly")}
                 />
                 <Form.Check
                   inline
@@ -335,7 +339,7 @@ class BookingScreen extends Component {
                   label="Monthly"
                   name="bookType"
                   id="monthly"
-                  onChange={this.onClick(4)}
+                  onChange={this.onClick("monthly")}
                 />
                 <DatePicker className="datepicker-booking"
                   dateFormat="dd/MM/yyyy"
@@ -378,7 +382,8 @@ class BookingScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    invitedUsers: state.user.invitedUsers
+    invitedUsers: state.user.invitedUsers,
+    userInfo: state.user.user || { name: "Bùi Quang Linh" }
   }
 };
 
