@@ -1,17 +1,74 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ListMeeting from '../ListMeeting/ListMeeting';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { FaTimes } from 'react-icons/fa';
 import { GoPerson, GoOrganization } from 'react-icons/go';
-import ReactSelect from '../ReactSelect/ReactSelect';
 import './contentHomeUser.css'
 import DatePicker from '../datePicker/DatePicker'
-import { Row, Container, Col } from 'react-bootstrap'
+import { Row, Container, Col } from 'react-bootstrap';
+import ModalDetail from '../modal/Modal';
+import axios from 'axios';
+import Meeting from '../Meeting/Meeting';
 
 class ContentHomeUser extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        ownMeetingInTimeSelected: [],
+        intitedMeetingInTimeSelected: []
+      },
+      show: false,
+      currentDetailMeeting: {}
+    };
+    this.onClickCard = this.onClickCard.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleAddMember = this.handleAddMember.bind(this);
+    this.handleRemoveMember = this.handleRemoveMember.bind(this);
+    this.handleRemoveMeeting = this.handleRemoveMeeting.bind(this);
+  };
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/home1')
+      .then(res => this.setState({ data: res.data }));
+  };
+
+  onClickCard(meeting) {
+    this.setState({
+      show: true,
+      currentDetailMeeting: meeting
+    }, console.log(this.state.currentDetailMeeting))
+  };
+
+  handleClose() {
+    this.setState({ show: false });
+  };
+
+  handleAddMember(userId) {
+
+  };
+
+  handleRemoveMember(memberId) {
+    axios.get()
+  };
+
+  handleRemoveMeeting(meetingId) {
+
+  }
+
   render() {
-    let input;
+    let ownMeetingInTimeSelected = this.state.data.ownMeetingInTimeSelected.map(meeting =>
+      <Meeting 
+        key={meeting._id} 
+        onClickShowDetail={() => {
+          meeting.isOwn = true;
+          this.onClickCard(meeting);
+        }} 
+        content={meeting} />
+    );
+
+    let intitedMeetingInTimeSelected = this.state.data.intitedMeetingInTimeSelected.map(meeting =>
+      <Meeting key={meeting._id} onClickShowDetail={() => this.onClickCard(meeting)} content={meeting} />
+    );
+
     return (
       <Container>
         <Row>
@@ -20,54 +77,27 @@ class ContentHomeUser extends React.Component {
           </Col>
           <Col xl={8} lg={8} md={5} xs={12} sm={12}>
             <h5 className="mt-3"><GoPerson />  Your Meeting</h5>
-            <ListMeeting Meetings={this.props.listMeeting.own} onClickCard={(detail) => this.props.handleShow(detail)} />
+            <div className="d-flex flex-wrap">
+                {ownMeetingInTimeSelected}
+            </div>
             <h5 className="mt-3"><GoOrganization />  Invited Meeting</h5>
-            <ListMeeting Meetings={this.props.listMeeting.invited} onClickCard={(detail) => this.props.handleShow(detail)} />
-            <Modal show={this.props.show} onHide={this.props.handleClose} size="lg">
-              <Modal.Header closeButton className="text-center">
-                <Modal.Title>{this.props.currentDetailMeeting.name}</Modal.Title>
-              </Modal.Header>
-              <Modal.Body className="ml-3">
-                <p>Location: Room {this.props.currentDetailMeeting.room}</p>
-                <p>Time: From {this.props.currentDetailMeeting.from} to {this.props.currentDetailMeeting.to}</p>
-                <p>Requirement: {this.props.currentDetailMeeting.requirement}</p>
-                <p>Description: {this.props.currentDetailMeeting.description}</p>
-                <ul className="list-group">
-                  {this.props.currentDetailMeeting.isOwn ? (<p>Members: {this.props.currentDetailMeeting.members.length}</p>) : null}
-                  {this.props.currentDetailMeeting.isOwn && this.props.currentDetailMeeting.members && this.props.currentDetailMeeting.members.map((member, index) => (
-                    <li key={index} className="list-group-item">{member.name}     <span className="badge badge-light  "><FaTimes onClick={() => this.props.handleRemoveMember(member.id)} /></span></li>
-                  ))}
-                  {this.props.currentDetailMeeting.isOwn ?
-                    <Form
-                      onSubmit={e => {
-                        e.preventDefault();
-                        if (!input.value.trim()) {
-                          return;
-                        };
-                        this.props.handleAddMember(input.value);
-                        input.value = '';
-                      }}
-                    >
-                      <input
-                        className="form-control"
-                        ref={node => input = node}
-                      />
-                    </Form> : ''
-                  }
-                  <ReactSelect />
-                </ul>
-              </Modal.Body>
-              <Modal.Footer>
-                {this.props.currentDetailMeeting.isOwn ? <Button variant="secondary" onClick={() => this.props.handleRemoveMeeting(this.props.currentDetailMeeting.id)}>Delete meeting</Button> : null}
-                <Button variant="secondary" onClick={this.props.handleClose}>Close</Button>
-              </Modal.Footer>
-            </Modal>
+            <div className="d-flex flex-wrap">
+                {intitedMeetingInTimeSelected}
+            </div>
+
+            {this.state.show ? <ModalDetail 
+                show={this.state.show} 
+                handleAddMember={this.handleAddMember} 
+                handleRemoveMember={this.handleRemoveMember}
+                currentDetailMeeting={this.state.currentDetailMeeting}
+                handleClose={this.handleClose}
+              /> : null}
           </Col>
         </Row>
       </Container>
     );
   }
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -79,6 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    initState: (initState) => dispatch({ type: 'INIT_HOME', state: initState }),
     handleShow: (currentDetail) => dispatch({ type: 'SHOW_MODAL', currentDetail: currentDetail }),
     handleClose: () => dispatch({ type: 'CLOSE_MODAL' }),
     handleAddMember: (newMember) => dispatch({ type: 'ADD_MEMBER', newMember: newMember }),
