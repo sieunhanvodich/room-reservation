@@ -6,7 +6,19 @@ function getUsersInfo () {
       return response.data
     })
 }
+function getDataDate(date) {
+  let params = {
+    date: date
+  }
+  return axios.get('/roomlist', params)
+    .then(response => {
+      return response.data.bookInfosFinded
+      
+      //  console.log("duy",response.data.bookInfosFinded)
+    })
+}
 
 export default {
-  getUsersInfo
+  getUsersInfo,
+  getDataDate
 }

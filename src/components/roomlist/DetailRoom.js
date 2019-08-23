@@ -3,8 +3,9 @@ import { Row, Col, Container, Image, Button, Badge } from 'react-bootstrap'
 import './DetailRoom.css'
 import { Link } from 'react-router-dom'
 
-class DetailRoom extends Component {
 
+class DetailRoom extends Component {
+  
   render() {
     return (
       <Container className="container">

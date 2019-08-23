@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com'
+axios.defaults.baseURL = 'http://localhost:3000'
 axios.defaults.headers.common.contentType = 'application/json'
 axios.defaults.headers.common['Cache-Control'] = 'no-cache'
 axios.defaults.headers.common['Cache-control'] = 'no-store'
