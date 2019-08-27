@@ -8,6 +8,8 @@ import ModalDetail from '../modal/Modal';
 import axios from 'axios';
 import Meeting from '../Meeting/Meeting';
 
+import DataHome from '../../services/UserService'
+
 class ContentHomeUser extends React.Component {
   constructor(props) {
     super(props);
